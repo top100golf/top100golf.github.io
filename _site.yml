@@ -1,14 +1,16 @@
 name: "Skip Perry"
 output_dir: "."
 navbar:
-  title: "America's Top Golf Courses"
+  title: "America's Top 100 Golf Courses"
   left:
     - text: "Home"
       href: index.html
-    - text: "About"
-      href: about.html
     - text: "The Top 100"
       href: the_top_100.html
+    - text: "Guided Tour"
+      href: guided_tour.html
+    - text: "About"
+      href: about.html
 output:
   html_document:
     theme: cosmo

@@ -1,5 +1,5 @@
 ---
-title: "About page"
+title: "Contact"
 ---
-    
-About page 
+
+Contact: golfcourserankings@gmail.com 
