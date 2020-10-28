@@ -1,0 +1,184 @@
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(gridExtra)
+library(geosphere)
+source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
+source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
+```
+
+```{r, echo=FALSE}
+course_list <- 
+  all_rankings %>% 
+  filter(Year == 2019) %>% 
+  select(Course) %>% 
+  distinct() %>% 
+  pull()
+
+course_of_interest <- str_replace_all(str_remove(knitr::current_input(), ".Rmd"), "-", " ")
+
+title_var <- course_info$Course_Name_Full[course_info$Course == course_of_interest]
+subtitle_var <- str_c(
+  course_info$City[course_info$Course == course_of_interest],
+  course_info$State[course_info$Course == course_of_interest], 
+  sep = ", "
+)
+```
+
+---
+title: `r title_var`
+subtitle: `r subtitle_var`
+---
+
+```{r, echo=FALSE}
+if (course_of_interest == "Sheep Ranch") {
+    year_designed <- 2019
+  } else {
+    year_designed <- 
+      course_info %>% filter(Course == course_of_interest) %>% pull(Year_Designed)
+  }
+
+blank_table <- 
+  tibble(
+    Year = rep(seq(1985, 2019, by = 2), 2),
+    Publication = c(rep("Golf Digest", 18), rep("Golf Magazine", 18)),
+    Course = course_of_interest
+  ) %>% 
+  filter(!(Publication == "Golf Magazine" & Year %in% c(1985, 1987, 1989)))
+
+coi_rankings <- 
+  all_rankings %>% 
+  filter(Course == course_of_interest) %>% 
+  mutate(Year = if_else(Course == "Sheep Ranch", 2019, Year)) %>% 
+  full_join(blank_table, by = c("Publication", "Year", "Course")) %>% 
+  filter(
+    Year >= year_designed,
+    !(Year == year_designed & is.na(Ranking))
+  ) %>% 
+  mutate(
+    Ranking = replace_na(Ranking, 110),
+    Ranking_Label = if_else(Ranking < 101, as.character(Ranking), "Unranked")
+  )
+```
+
+******
+
+### Rankings over time
+
+<br>
+
+```{r, echo=FALSE}
+#plots_dir <- "/Users/skipperry/Documents/golf_course_rankings/plots/"
+#jpeg_path <- 
+#  str_c(plots_dir, tolower(str_replace_all(course_of_interest, " ", "_")), ".jpg")
+
+#ggsave(
+#  filename = jpeg_path, 
+#  plot = plot_rankings(course_of_interest), 
+#  device = "jpeg",
+#  width = 6, height = 5
+#)
+
+#knitr::include_graphics(jpeg_path)
+
+plot_rankings(course_of_interest)
+```
+
+```{r, echo=FALSE}
+best_ranks <- 
+  coi_rankings %>% 
+  group_by(Publication) %>% 
+  filter(Ranking == min(Ranking)) %>% 
+  arrange(Publication, Year) %>% 
+  ungroup()
+
+best_golf_digest <- 
+  best_ranks %>% 
+  filter(Publication == "Golf Digest")
+
+best_golf_magazine <- 
+  best_ranks %>% 
+  filter(Publication == "Golf Magazine")
+
+worst_ranks <- 
+  coi_rankings %>% 
+  group_by(Publication) %>% 
+  filter(Ranking == max(Ranking)) %>% 
+  arrange(Publication, Year) %>% 
+  ungroup()
+
+worst_golf_digest <- 
+  worst_ranks %>% 
+  filter(Publication == "Golf Digest")
+
+worst_golf_magazine <- 
+  worst_ranks %>% 
+  filter(Publication == "Golf Magazine")
+
+target_lon_lat <- c(
+  course_info$longitude[course_info$Course == course_of_interest],
+  course_info$latitude[course_info$Course == course_of_interest]
+)
+
+closest_courses <- 
+  course_info %>% 
+  inner_join(
+    all_rankings %>% 
+      filter(Year == 2019) %>% 
+      select(Course) %>% 
+      distinct(),
+    "Course"
+  ) %>% 
+  transmute(
+    Course, longitude, latitude,
+    meters = distHaversine(target_lon_lat, matrix(c(longitude, latitude), ncol = 2)),
+    miles = round(meters * 0.00062137119224)
+  ) %>% 
+  filter(Course != course_of_interest) %>% 
+  arrange(miles) %>% 
+  slice(1:5)
+
+closest_former_courses <- 
+  course_info %>% 
+  anti_join(
+    all_rankings %>% 
+      filter(Year == 2019) %>% 
+      select(Course) %>% 
+      distinct(),
+    "Course"
+  ) %>% 
+  transmute(
+    Course, longitude, latitude,
+    meters = distHaversine(target_lon_lat, matrix(c(longitude, latitude), ncol = 2)),
+    miles = round(meters * 0.00062137119224)
+  ) %>% 
+  filter(Course != course_of_interest) %>% 
+  arrange(miles) %>% 
+  slice(1:5)
+```
+
+******
+
+### Fast facts
+
+* Access: 
+  * `r course_info$Status[course_info$Course == course_of_interest]`
+* Best ranking: 
+  * Golf Digest: `r best_golf_digest %>% slice(1) %>% pull(Ranking_Label)` (`r best_golf_digest %>% pull(Year) %>% paste(collapse = ", ")`)
+  * Golf Magazine: `r best_golf_magazine %>% slice(1) %>% pull(Ranking_Label)` (`r best_golf_magazine %>% pull(Year) %>% paste(collapse = ", ")`)
+* Worst ranking: 
+  * Golf Digest: `r worst_golf_digest %>% slice(1) %>% pull(Ranking_Label)` (`r worst_golf_digest %>% pull(Year) %>% paste(collapse = ", ")`)
+  * Golf Magazine: `r worst_golf_magazine %>% slice(1) %>% pull(Ranking_Label)` (`r worst_golf_magazine %>% pull(Year) %>% paste(collapse = ", ")`)
+* Closest currently ranked courses:
+  * `r closest_courses %>% slice(1) %>% pull(Course)`, `r closest_courses %>% slice(1) %>% pull(miles)` miles
+  * `r closest_courses %>% slice(2) %>% pull(Course)`, `r closest_courses %>% slice(2) %>% pull(miles)` miles
+  * `r closest_courses %>% slice(3) %>% pull(Course)`, `r closest_courses %>% slice(3) %>% pull(miles)` miles
+  * `r closest_courses %>% slice(4) %>% pull(Course)`, `r closest_courses %>% slice(4) %>% pull(miles)` miles
+  * `r closest_courses %>% slice(5) %>% pull(Course)`, `r closest_courses %>% slice(5) %>% pull(miles)` miles
+* Closest formerly ranked courses:
+  * `r closest_former_courses %>% slice(1) %>% pull(Course)`, `r closest_former_courses %>% slice(1) %>% pull(miles)` miles
+  * `r closest_former_courses %>% slice(2) %>% pull(Course)`, `r closest_former_courses %>% slice(2) %>% pull(miles)` miles
+  * `r closest_former_courses %>% slice(3) %>% pull(Course)`, `r closest_former_courses %>% slice(3) %>% pull(miles)` miles
+  * `r closest_former_courses %>% slice(4) %>% pull(Course)`, `r closest_former_courses %>% slice(4) %>% pull(miles)` miles
+  * `r closest_former_courses %>% slice(5) %>% pull(Course)`, `r closest_former_courses %>% slice(5) %>% pull(miles)` miles
