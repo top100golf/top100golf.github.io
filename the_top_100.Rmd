@@ -47,7 +47,7 @@ df <-
   select(-Top_Rating) %>% 
   mutate_at(vars(`Golf Digest`, `Golf Magazine`, `Average`), ~ if_else(is.na(.), '-', as.character(.)))
 
-base_url <- "https://top100golf.courses.io/courses/"
+base_url <- "https://top100golf.github.io/courses/"
 base_url_rep <- rep(base_url, nrow(df))
 
 df %>% 
