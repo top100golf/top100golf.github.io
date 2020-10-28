@@ -23,3 +23,12 @@ for (course in course_list) {
     output_file = str_c(web_dir, tolower(str_replace_all(course_of_interest, " ", "_")), ".html")
   )
 }
+
+course_list
+
+for (course in course_list[1:10]) {
+  readLines("/Users/skipperry/Documents/golf_course_rankings/single_course.Rmd") %>% 
+    writeLines(str_c("/Users/skipperry/Documents/top100golf.github.io/", course, ".Rmd"))
+}
+
+
