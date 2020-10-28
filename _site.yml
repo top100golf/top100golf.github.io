@@ -1,0 +1,9 @@
+name: "Skip Perry"
+output_dir: "."
+navbar:
+  title: "America's Top Golf Courses"
+  left:
+    - text: "Home"
+      href: index.html
+    - text: "About"
+      href: about.html
