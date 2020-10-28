@@ -7,3 +7,5 @@ navbar:
       href: index.html
     - text: "About"
       href: about.html
+    - text: "The Top 100"
+      href: the_top_100.html

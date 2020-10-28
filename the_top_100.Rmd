@@ -1,0 +1,57 @@
+---
+title: "America's top-ranked golf courses"
+#author: "Skip Perry"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+library(lubridate)
+library(gridExtra)
+#library(DT)
+source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
+source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
+```
+
+<br> 
+
+#### Sources:
+
+* [Golf Digest 2019-2020](https://subscribe.golfdigest.com/circulation/golfdigest/data/GD_0217_100GREATEST_rev2.pdf)
+* [Golf Magazine 2020](https://www.golfclubatlas.com/forum/index.php/topic,68928.msg1654198.html#msg1654198)
+* 68 courses on both lists
+* 64 courses on one list
+
+<br> 
+
+```{r, echo=FALSE}
+df <- 
+  current_rankings_spread %>% 
+  mutate(Average = (`Golf Digest` + `Golf Magazine`) / 2) %>% 
+  inner_join(course_info, by = "Course") %>% 
+  transmute(
+    Course, Location = str_c(City, ", ", State), 
+    `Designer(s)` = case_when(
+      is.na(Designer2) ~ Designer1,
+      is.na(Designer3) ~ str_c(Designer1, Designer2, sep = ", "),
+      TRUE ~ str_c(Designer1, Designer2, Designer3, sep = ", ")
+    ),
+    `Year Designed` = Year_Designed, `Golf Digest`, `Golf Magazine`, Average,
+    Top_Rating = case_when(
+      is.na(`Golf Digest`) | `Golf Digest` > `Golf Magazine` ~ `Golf Magazine`,
+      TRUE ~ `Golf Digest`
+    )
+  ) %>% 
+  arrange(Average, Top_Rating) %>% 
+  select(-Top_Rating) %>% 
+  mutate_at(vars(`Golf Digest`, `Golf Magazine`, `Average`), ~ if_else(is.na(.), '-', as.character(.)))
+
+base_url <- "https://top100golf.courses.io/courses/"
+base_url_rep <- rep(base_url, nrow(df))
+
+df %>% 
+  select(-`Designer(s)`) %>% 
+  mutate(Course = str_c("[", Course, "](", base_url, tolower(str_replace_all(Course, " ", "_")), ".html)")) %>% 
+  knitr::kable(align = c(rep("l", 1), rep("c", ncol(.) - 1)))
+```
