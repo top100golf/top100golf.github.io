@@ -1,0 +1,266 @@
+---
+title: "A guided tour of the top 100 courses in America"
+#author: "Skip Perry"
+output: html_document
+---
+
+```{r, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(tidyverse)
+library(lubridate)
+library(gridExtra)
+source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
+source("/Users/skipperry/Documents/golf_course_rankings/map_multiple_courses.R")
+source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
+
+print_table_from_list <- function(course_list) {
+  base_url <- "https://top100golf.github.io/"
+
+  rankings_for_table %>% 
+    filter(Course %in% course_list) %>% 
+    mutate_if(is.numeric, ~ replace_na(., "-")) %>% 
+    mutate(Course = str_c("[", Course, "](", base_url, str_replace_all(Course, "\\(|\\)|\\s|\\'", "-"), ".html)")) %>% 
+    knitr::kable(align = "c")
+}
+```
+
+Every two years, Golf Digest and Golf Magazine issue widely read and debated rankings of the nation's best golf courses. Ranking golf courses, like ranking colleges, is both a fool's errand and a natural instinct. Golfers can't help but compare and contrast the courses they have played, and those comparisons can be quantified and arranged. The resulting ranking has no bearing on how much a player enjoys a round of golf but can be a major feather in the cap for courses across the country. 
+
+The project of ranking American golf courses has been a decades-long undertaking - Golf Digest started releasing rankings from #1 to #100 in 1985, while Golf Magazine followed suit in 1991. (Before 1985, Golf Digest grouped courses into First 10, Second 10, Third 10, Fourth 10, Fifth 10, and Second 50, a format which makes more sense but doesn't sell as many magazines.)
+
+This is an extremely rich set of data, but until now there hasn't been a practical way to explore it visually or temporally. The two magazines do not make their historical data easily available and tend to make comparisons only between the current and previous issues. Visualizations that allow for tracking trends over time allow the observer to answer a number of interesting questions about how opinions have changed over the past three decades. Which courses and schools of design have staying power? What are some architectural trends that have come and gone? Which designers have trended up or trended down? Are there any interesting geographical patterns? What kind of differences are there between the two magazines' rating systems? 
+
+Typos and incorrect information are almost assured; indeed, there is sometimes conflicting or missing information even within the same magazine issue. Please feel free to send over corrections, fixes and suggestions to golfcourserankings@gmail.com. 
+
+***
+
+### The blue bloods
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(blue_bloods)
+
+print_table_from_list(blue_bloods)
+```
+
+In both publications, the top 10 is rarefied air that has been occupied almost exclusively by a small number of classic courses built during golf's ["golden age"](https://www.amazon.com/Golden-Age-Golf-Design/dp/1886947317) of design:
+
+* Pine Valley (top 2 in every ranking in both publications)
+* Cypress Point (top 5 in every ranking)
+* Augusta National (top 5 in every ranking until this year)
+* Shinnecock Hills (top 6 in every ranking)
+* Pebble Beach (top 7 in every ranking until this year)
+* Oakmont (top 8 in every ranking since 1993)
+* Merion (top 8 in every ranking since 1995)
+
+Golf Magazine has been especially ossified at the top - Pine Valley and Cypress Point have been ranked #1 and #2, respectively, in every Golf Magazine list since its first publication in 1991.
+
+With the exception of Pebble Beach, membership rolls at these courses are populated by captains of industry and it is nearly impossible for the average golfer to get on for a round. Two of them are not tournament-ready - Pine Valley has never hosted professional events while Cypress Point pulled out of the Bing Crosby Clambake more than 30 years ago and plays to 6524 yards from the tips - but the rest are current and former hosts of some of the most prominent professional and amateur competitions.
+
+Despite universally acclaimed designs and decades of tournament experience, among the other five courses only Oakmont has managed to keep up with modern ball and club technology. Merion's 2013 US Open setup received mixed reviews and the club may have to wait until 2030 for a return visit; Shinnecock Hills has been the site of two consecutive USGA PR catastrophes; and last year's US Open at Pebble Beach saw players hitting hitting the 6th hole in two with a 3 wood and a mid-iron. Perhaps it's just a coincidence, but Pebble fell to its all-time low of 10th in the Golf Magazine ratings. 
+
+Even Augusta National, which has unlimited resources and only a few months of on-course play each year, is struggling to maintain shot values. In a borderline heretical move, Golf Magazine put Augusta National on notice with a column [disparaging the club's recent design changes](https://www.golf.com/news/columns/2019/11/21/why-augusta-national-dropped-four-places-ranking/) and ended its seemingly permanent streak in the top 5. What does it mean for the game of golf if technological changes make the world's best courses obsolete for PGA Tour pros? 
+
+***
+
+### [The new (and newly revitalized) blue bloods](https://sperry304.github.io/new_blue_bloods.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(blue2)
+
+print_table_from_list(blue2)
+```
+
+Like high society in real life, entry into the top echelons from the outside is rare but not impossible. Three courses have made a move into the top 10, two by staging comebacks and the other by single-handedly changing the course of golf course architecture in the new millennium. C.B. Macdonald's National Golf Links of America was once ranked #56 by Golf Digest and #26 by Golf Magazine but has vaulted up to #8 and #4, respectively, while Fishers Island, currently #10 and #9, was out of the top 100 altogether in Golf Digest as recently as 1999. Joining
+
+Now firmly in the top 10 in both lists, Sand Hills' standing is perhaps the most remarkable on the entire list. The influential 1995 Bill Coore and Ben Crenshaw design is more than 60 years newer than the second-youngest top 10 course (Augusta National, 1933) and it is the only top 10 course located between Oakmont on the east and Monterey on the west. 
+
+Nipping at their heels is Friar's Head, another Coore/Crenshaw special that's just down the road from National and Fishers. Will it be the next course to crack the top 10? And if so, at whose cost? 
+
+<br>
+
+### If this is the B-list, it's quite the B-list
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(b_list)
+
+print_table_from_list(b_list)
+```
+
+The courses in this group have been mainstays in in the top 20 - though generally not the top 10 - in at least one of the two rankings. Again, we see a split between major championship venues and clubs that have shunned the inconvenience and attention that come with hosting tournaments. We can also divide this group between the first three, which are consensus top 20 courses, and the rest, which are outside the top 20 in one of the two publications. 
+
+Not long ago, the West course at Winged Foot would have qualified for the "blue blood" set, but the legendary US Open venue has fallen out of the top 10 in both magazines. Comments by Golf Digest raters, some of whom call it "less interesting" than the club's East Course and situated on a property that is "downright ordinary with little topographical character," are surprisingly negative for such a highly ranked course. Will a recently completed greens restoration and publicity from hosting the 2020 US Open vault it back into the top 10?
+
+Friar's Head, another Coore and Crenshaw collaboration, deserves kudos as the only post-World War II course aside from Sand Hills to maintain a position in the top 15 of either ranking.  
+
+<br>
+
+### [Trouble in paradise, part 1: upper crust division](https://sperry304.github.io/trouble1.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(trouble1)
+
+print_table_from_list(trouble1)
+```
+
+Of course anyone would love to belong to clubs like these, but the trend lines speak for themselves. Board members at these courses are faced with some tough questions to answer. What's causing the slide? If a problem can be identified, is it fixable, and if so, for how much money and time? Should members care? It's easy to say they shouldn't, but it's a tough pill to swallow (and bad for business) when your course drops 20, 30, or more places in the rankings table. 
+
+Muirfield Village is by far the highest-rated course in this group but Jack Nicklaus himself believes there is work to be done - the club announced a [two-year renovation](https://www.golfdigest.com/story/muirfield-village-announces-two-year-two-phase-renovation-to-be-overseen-by-jack-nicklaus) with the goal of maintaining Nicklaus' "old-fashioned beliefs" about golf course design while protecting par against PGA Tour players. As Augusta National has found, easier said than done. 
+
+The Olympic Club recently [defected from the USGA to the PGA of America](https://www.golfdigest.com/story/the-olympic-clubs-major-moment-usga-pga-of-america), the highest profile example yet of old-line clubs crying uncle on the USGA's tournament management. The controversial 1998 US Open setup appears to have led directly to a drop in the Lake Course's reputation and new bunkers installed by the USGA ahead of the 2012 US Open remain detested by many members. Perhaps a more permissive setup that allows for a PGA Championship and Ryder Cup where the players, not the course, are the story will allow the hillside club to restore its position near the top of the rankings. 
+
+All the while, [ghosts of magazines past](https://sperry304.github.io/ghosts.html) are lurking:
+
+* Shoal Creek, once ranked #11, out of both rankings
+* Long Cove, once ranked #19, out of both rankings
+* Laurel Valley, once ranked #22, out of both rankings
+* Jupiter Hills, once ranked #23, out of both rankings
+* Black Diamond Ranch, once ranked #24, out of both rankings
+
+Wannamoisett might be the ultimate cautionary tale. In 2001, it was ranked #35 by Golf Digest and #64 by Golf Magazine. In the span of only six years, it fell out of both rankings completely and hasn't been seen in the top 100 since. 
+
+<br>
+
+### [Returning to glory](https://sperry304.github.io/returners.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(returners)
+
+print_table_from_list(returners)
+```
+
+In comparison with the long list of classic courses have been muscled out of the top third of the charts, two lucky clubs have been rewarded for renovation work by trendy architects and publicity bumps after hosting major amateur and professional events. This list of comeback kids is not a long one even if you add National and Fishers Island, the only other pre-war venues that have managed to make moves into the upper tier in both rankings.
+
+***
+
+### [A few merely fantastic courses that you also won't be able to get on (old school)](https://sperry304.github.io/fantastic1.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(c_list)
+
+print_table_from_list(c_list)
+```
+
+These highly rated private clubs, all but one east of the Mississippi River (and Interlachen only barely west of it), tend to have relatively stable ratings in the 40-80 range. All of them were designed in the 1920s and earlier except Peachtree, which earns honorary "golden age" status from its Bobby Jones connection. 
+
+<br>
+
+### [A few merely fantastic courses that you also won't be able to get on (new school)](https://sperry304.github.io/fantastic2.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(new_b_list)
+
+print_table_from_list(new_b_list)
+```
+
+I'm accepting invitations... 
+
+<br>
+
+### [The cheapest dates on the list](https://sperry304.github.io/cheap.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(cheap)
+
+print_table_from_list(cheap)
+```
+
+Good news, comrades! Not all of the top 100 is stacked with stuffy, expensive private clubs - there are also some stuffy, expensive public courses as well. But remember, \$400 for a round of golf is a hell of a lot less expensive than \$100,000 for initiation fees. 
+
+The Bandon group is obviously the #1 target here, but after that I would set up shop at Bethpage, the unholy union of Pine Valley and the DMV. 
+
+Worth noting is the Ocean Course's circuitous route to its position near the top of the charts. The diabolical Dye track had Uber-esque post-IPO drops in both magazines that threatened to boot it out of the top 100 altogether, but in the early 2000s each publication moved in tandem to solidify the course's status in the top 25. 
+
+Also noteworthy is the precipitous drop of Pinehurst No. 2 in Golf Digest's list after its [extreme makeover by Coore and Crenshaw](https://onebeardedgolfer.com/2014/06/17/pinehurst-no-2-renovation-the-wave-of-the-future-or-cute-little-story/). Golf Digest raters must not like the color brown. 
+
+Every public course ranked by Golf Digest is ranked by Golf Magazine but not vice versa. It's one thing to sniff your nose at Streamsong or Torrey Pines, but Pasatiempo? 
+
+<br>
+
+### [Tom Fazio's checks to the Golf Magazine raters apparently didn't clear](https://sperry304.github.io/fazio.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(fazio)
+
+print_table_from_list(fazio)
+```
+
+The Tom Fazio aesthetic represents the clearest difference between the two magazines. There are six Fazio courses in the top 50 of Golf Digest's rankings and a big fat zero in Golf Magazine's. Alotian was once #14 in Golf Digest (now #31) and is unranked in Golf Magazine, with Gozzer Ranch about to meet a similar fate.
+
+It's easy to joke about this situation, but one positive effect of the Golf Digest love for Fazio is to add some geographic diversity to the rankings. Places like western North Carolina, Arkansas, Idaho, Arizona, and Palm Springs weren't lucky enough to get golden age courses and are thus largely locked out of the Golf Magazine list. 
+
+<br>
+
+### [A few more lush, luxurious  tracks that Golf Digest loves and Golf Magazine doesn't (non-Fazio edition)](https://sperry304.github.io/lush.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(lush)
+
+print_table_from_list(lush)
+```
+
+Some of these could also be placed in the "trouble in paradise" category...
+
+<br>
+
+### [Some ancient clubs that Golf Magazine loves and Golf Digest doesn't](https://sperry304.github.io/ancient.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(oldccs)
+
+print_table_from_list(oldccs)
+```
+
+I haven't played most of these courses, but the prospect of a post-round beer in a club room lined with wood paneling and priceless memorabilia makes them much more appealing than most all of the Fazio/Nicklaus/Dye Golf Digest set. 
+
+<br>
+
+### [Back in vogue, for now at least](https://sperry304.github.io/vogue.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(more_returns)
+
+print_table_from_list(more_returns)
+```
+
+These classic courses have recently returned to the rankings; time will tell whether they have staying power.
+
+<br>
+
+### Trouble in paradise, part 2: catch the falling knife
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(trouble2)
+
+print_table_from_list(trouble2)
+```
+
+With the fierce competition in the golf course market, declining demand for country club memberships, and unpredictable, shifting architectural tastes across a variety of different constituencies, efforts to stay in the Top 100 will be expensive - and might not even work. Good luck! 
+
+Looking at this group of courses along with the previous Trouble in Paradise map, there is obviously something going on in the Midwest. Has the population of raters become more urban and coastal? 
+
+<br>
+
+### [Hanging on by a thread](https://sperry304.github.io/thread.html)
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(thread)
+
+print_table_from_list(thread)
+```
+
+<br>
+
+### Pouring one out for the recently and dearly departed
+
+```{r, fig.asp = 0.55}
+map_multiple_courses(latest_dropouts)
+
+base_url <- "https://top100golf.github.io/"
+
+latest_dropouts_rankings_for_table %>% 
+  mutate_if(is.numeric, ~ replace_na(., "-")) %>% 
+  mutate(Course = str_c("[", Course, "](", base_url, str_replace_all(Course, "\\(|\\)|\\s|\\'", "-"), ".html)")) %>% 
+  knitr::kable(align = "c")
+```
+
+So it turns out that closing your course and [letting it grow over into a giant weed pasture](https://www.geoffshackelford.com/homepage/2020/7/2/as-feared-yale-golf-course-has-fallen-into-extreme-disrepair) is not good for your rankings. 
