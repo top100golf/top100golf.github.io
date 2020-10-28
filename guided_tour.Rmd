@@ -1,6 +1,6 @@
 ---
 title: "A guided tour of the top 100 courses in America"
-#author: "Skip Perry"
+author: "Skip Perry, October 2020"
 output: html_document
 ---
 
@@ -253,8 +253,4 @@ latest_dropouts_rankings_for_table %>%
   knitr::kable(align = "c")
 ```
 
-Some of these were a long time coming (Laurel Valley, Torrey Pines, Colonial), while others represented short blips in the top 100 (Mountain Lake, Philadelphia Cricket). But Yale is definitely the saddest of all. It turns out that closing your course and [letting it grow over into a giant weed pasture](https://www.geoffshackelford.com/homepage/2020/7/2/as-feared-yale-golf-course-has-fallen-into-extreme-disrepair) is not good for your ratings. 
-
-***
-
-Skip Perry, October 2020
+Some of these were a long time coming (Laurel Valley, Torrey Pines, Colonial), while others represented short blips in the top 100 (Mountain Lake, Philadelphia Cricket). But Yale is definitely the saddest of all. It turns out that closing your course and [letting it grow over into a giant weed pasture](https://www.geoffshackelford.com/homepage/2020/7/2/as-feared-yale-golf-course-has-fallen-into-extreme-disrepair) is not good for your ratings.

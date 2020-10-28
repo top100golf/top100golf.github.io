@@ -1,6 +1,6 @@
 ---
 title: "America's top-ranked golf courses"
-#author: "Skip Perry"
+#author: "Compiled by Skip Perry, October 2020"
 output: html_document
 ---
 
@@ -53,5 +53,9 @@ base_url_rep <- rep(base_url, nrow(df))
 df %>% 
   select(-`Designer(s)`) %>% 
   mutate(Course = str_c("[", Course, "](", base_url, str_replace_all(Course, "\\(|\\)|\\s|\\'", "-"), ".html)")) %>% 
-  knitr::kable(align = c(rep("l", 1), rep("c", ncol(.) - 1)))
+  knitr::kable(align = "c")
 ```
+
+***
+
+Compiled by Skip Perry, October 2020
