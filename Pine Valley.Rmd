@@ -24,7 +24,14 @@ subtitle_var <- str_c(
   course_info$State[course_info$Course == course_of_interest], 
   sep = ", "
 )
+```
 
+---
+title: `r title_var`
+subtitle: `r subtitle_var`
+---
+
+```{r, echo=FALSE}
 if (course_of_interest == "Sheep Ranch") {
     year_designed <- 2019
   } else {
@@ -54,11 +61,6 @@ coi_rankings <-
     Ranking_Label = if_else(Ranking < 101, as.character(Ranking), "Unranked")
   )
 ```
-
----
-title: `r title_var`
-subtitle: `r subtitle_var`
----
 
 ******
 
