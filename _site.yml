@@ -9,3 +9,6 @@ navbar:
       href: about.html
     - text: "The Top 100"
       href: the_top_100.html
+output:
+  html_document:
+    theme: cosmo

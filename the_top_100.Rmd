@@ -52,6 +52,6 @@ base_url_rep <- rep(base_url, nrow(df))
 
 df %>% 
   select(-`Designer(s)`) %>% 
-  mutate(Course = str_c("[", Course, "](", base_url, tolower(str_replace_all(Course, " ", "_")), ".html)")) %>% 
+  mutate(Course = str_c("[", Course, "](", base_url, str_replace_all(Course, " ", "-"), ".html)")) %>% 
   knitr::kable(align = c(rep("l", 1), rep("c", ncol(.) - 1)))
 ```
