@@ -18,6 +18,13 @@ course_list <-
 
 # course_list <- latest_dropouts
 
+course_list <- 
+  all_rankings %>% 
+  filter(Year %in% c(2017, 2019)) %>% 
+  select(Course) %>% 
+  distinct() %>% 
+  pull()
+
 for (course in course_list) {
   readLines("/Users/skipperry/Documents/golf_course_rankings/single_course.Rmd") %>% 
     writeLines(str_c("/Users/skipperry/Documents/top100golf.github.io/", course, ".Rmd"))
