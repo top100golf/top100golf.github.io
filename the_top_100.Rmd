@@ -14,14 +14,20 @@ source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
 source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
 ```
 
-<br> 
+***
 
 #### Sources:
 
 * [Golf Digest 2019-2020](https://subscribe.golfdigest.com/circulation/golfdigest/data/GD_0217_100GREATEST_rev2.pdf)
 * [Golf Magazine 2020](https://www.golfclubatlas.com/forum/index.php/topic,68928.msg1654198.html#msg1654198)
-* 68 courses on both lists
-* 64 courses on one list
+
+#### Fast facts:
+
+* 132 courses are currently ranked
+* 68 courses appear on both lists
+* 64 courses appear on one list
+
+***
 
 <br> 
 
