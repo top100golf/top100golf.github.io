@@ -1,0 +1,56 @@
+---
+title: "America's ex-top 100 golf courses"
+#author: "Compiled by Skip Perry, October 2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+options(dplyr.summarise.inform = F)
+knitr::opts_chunk$set(echo = F)
+library(tidyverse)
+library(lubridate)
+library(gridExtra)
+#library(DT)
+source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
+source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
+```
+
+Some great things must come to an end. The following courses used to appear in one of the two Top 100 lists but have sadly dropped off, sorted by the best rank achieved by that course. 
+
+```{r}
+df <- 
+  all_rankings %>% 
+  group_by(Course) %>% 
+  mutate(
+    max_year = max(Year),
+    times_ranked = n(),
+    min_rank_overall = min(Ranking)
+  ) %>% 
+  group_by(Course, Publication, max_year, times_ranked, min_rank_overall) %>% 
+  summarize(Ranking = min(Ranking)) %>% 
+  ungroup() %>% 
+  spread(Publication, Ranking) %>% 
+  filter(max_year < 2019) %>% 
+  mutate_at(vars(`Golf Digest`, `Golf Magazine`), ~ if_else(is.na(.), '-', as.character(.))) %>% 
+  inner_join(
+    course_info %>% 
+      transmute(Course, Location = str_c(City, ", ", State), Year_Designed), 
+    by = "Course"
+  ) %>% 
+  transmute(
+    Course, Location, `Year Designed` = Year_Designed, 
+    `Number of Appearances` = times_ranked, `Last Year Ranked` = max_year,
+    `Best Golf Digest Ranking` = `Golf Digest`,
+    `Best Golf Magazine Ranking` = `Golf Magazine`,
+    min_rank_overall
+  ) %>% 
+  arrange(min_rank_overall, desc(`Number of Appearances`), desc(`Last Year Ranked`)) %>% 
+  select(-min_rank_overall)
+
+base_url <- "https://top100golf.github.io/"
+base_url_rep <- rep(base_url, nrow(df))
+
+df %>% 
+  mutate(Course = str_c("[", Course, "](", base_url, str_replace_all(Course, "\\(|\\)|\\s|\\'", "-"), ".html)")) %>% 
+  knitr::kable(align = "c")
+```

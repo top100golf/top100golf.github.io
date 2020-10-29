@@ -5,10 +5,10 @@ gcr_dir <- "/Users/skipperry/Documents/golf_course_rankings/"
 web_dir <- "/Users/skipperry/Documents/top100golf.github.io/courses/"
 
 source(str_c(gcr_dir, "plot_rankings.R"))
+source(str_c(gcr_dir, "course_categories.R"))
 
 course_list <- 
   all_rankings %>% 
-  filter(Year == 2019) %>% 
   select(Course) %>% 
   distinct() %>% 
   pull()
@@ -18,12 +18,7 @@ course_list <-
 
 # course_list <- latest_dropouts
 
-course_list <- 
-  all_rankings %>% 
-  filter(Year %in% c(2017, 2019)) %>% 
-  select(Course) %>% 
-  distinct() %>% 
-  pull()
+course_list <- ex_top_100
 
 for (course in course_list) {
   readLines("/Users/skipperry/Documents/golf_course_rankings/single_course.Rmd") %>% 
