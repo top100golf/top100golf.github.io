@@ -15,7 +15,13 @@ source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
 source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
 ```
 
-Some great things must come to an end. The following courses used to appear in one of the two Top 100 lists but have sadly dropped off, sorted by the best rank achieved by that course. 
+*** 
+
+Unlike country club memberships, golf courses don't always get to keep their spots in the Top 100 for life. The following 143 courses used to be ranked in one of the two Top 100 lists but have dropped off. They have been sorted by the best rank achieved by that course, with ties broken by the number of times they appeared on a list.  
+
+As of 2015 there were about 16,000 golf courses in the USA, 275 of which have been ranked in the Top 100 at some point. Making even a single appearance is something to be proud of. 
+
+***
 
 ```{r}
 df <- 
