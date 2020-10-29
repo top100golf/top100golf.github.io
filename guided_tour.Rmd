@@ -52,13 +52,15 @@ In both publications, the top 10 is rarefied air that has been occupied almost e
 * Oakmont (top 8 in every ranking since 1993)
 * Merion (top 8 in every ranking since 1995)
 
-Golf Magazine has been especially ossified at the top - Pine Valley and Cypress Point have been ranked #1 and #2, respectively, in every Golf Magazine list since its first publication in 1991.
+<!-- Golf Magazine has been especially ossified at the top - Pine Valley and Cypress Point have been ranked #1 and #2, respectively, in every Golf Magazine list since its first publication in 1991. -->
 
-With the exception of Pebble Beach, membership rolls at these courses are populated by captains of industry and it is nearly impossible for the average golfer to get on for a round. Two of them are not tournament-ready - Pine Valley has never hosted professional events while Cypress Point pulled out of the Bing Crosby Clambake more than 30 years ago and plays to 6524 yards from the tips - but the rest are current and former hosts of some of the most prominent professional and amateur competitions.
+With the exception of Pebble Beach, membership rolls at these courses are populated by captains of industry and the average golfer has no hope of ever getting on for a round. While Pine Valley and Cypress Point are not known as modern tournament courses, Pine Valley is open to the viewing public every year for the mid-amateur Crump Cup and Cypress Point has begun hosting occasional college tournaments. The other five courses are active hosts of some of the country's most prominent professional and amateur competitions.
 
-Despite universally acclaimed designs and decades of tournament experience, among the other five courses only Oakmont has managed to keep up with modern ball and club technology. Merion's 2013 US Open setup received mixed reviews and the club may have to wait until 2030 for a return visit; Shinnecock Hills has been the site of two consecutive USGA PR catastrophes; and last year's US Open at Pebble Beach saw players hitting hitting the 6th hole in two with a 3 wood and a mid-iron. Perhaps it's just a coincidence, but Pebble fell to its all-time low of 10th in the Golf Magazine ratings. 
+Despite universally acclaimed designs and decades of tournament experience, all of these clubs have struggled to keep up with modern ball and club technology. Merion's 2013 US Open setup received mixed reviews and the club may have to wait until 2030 for a return visit; Shinnecock Hills has been the site of two consecutive USGA PR catastrophes; the 2016 US Open at Oakmont was the site of Dustin Johnson's infamous windblown ball wobble and penalty; and the 2019 US Open at Pebble Beach saw players hitting the par-5 6th hole in two with a 3 wood and a mid-iron. 
 
-Even Augusta National, which has unlimited resources and only a few months of on-course play each year, is struggling to maintain shot values. In a borderline heretical move, Golf Magazine put Augusta National on notice with a column [disparaging the club's recent design changes](https://www.golf.com/news/columns/2019/11/21/why-augusta-national-dropped-four-places-ranking/) and ended its seemingly permanent streak in the top 5. What does it mean for the game of golf if technological changes make the world's best courses obsolete for PGA Tour pros? 
+Even Augusta National, which has unlimited resources and only a few months of on-course play each year, is struggling to maintain shot values. In a borderline heretical move, Golf Magazine put Augusta National on notice with a column [disparaging the club's recent design changes](https://www.golf.com/news/columns/2019/11/21/why-augusta-national-dropped-four-places-ranking/) and this year ended the club's seemingly permanent streak in the US top 5. What does it mean for the game of golf if technological changes make the world's best courses obsolete for PGA Tour pros? 
+
+Not long ago, the West course at Winged Foot would have easily qualified for the "blue blood" set, but the legendary venue has fallen out of the top 10 in both magazines. Comments by Golf Digest raters, some of whom call it "less interesting" than the club's East Course and situated on a property that is "downright ordinary with little topographical character," are surprisingly negative for such a highly ranked course. Will a recently completed restoration and publicity from hosting the 2020 US Open vault it back into the top 10?
 
 ***
 
@@ -72,9 +74,11 @@ print_table_from_list(blue2)
 
 Like high society in real life, entry into the top echelons from the outside is rare but not impossible. Three courses have made a move into the top 10, two by staging comebacks and the other by single-handedly changing the course of golf course architecture in the new millennium. C.B. Macdonald's National Golf Links of America was once ranked #56 by Golf Digest and #26 by Golf Magazine but has vaulted up to #8 and #4, respectively, while Fishers Island, currently #10 and #9, was out of the top 100 altogether in Golf Digest as recently as 1999. Joining
 
-Now firmly in the top 10 in both lists, Sand Hills' standing is perhaps the most remarkable on the entire list. The influential 1995 Bill Coore and Ben Crenshaw design is more than 60 years newer than the second-youngest top 10 course (Augusta National, 1933) and it is the only top 10 course located between Oakmont on the east and Monterey on the west. 
+Now firmly in the top 10 in both lists, Sand Hills' standing is perhaps the most remarkable on the entire list. The influential 1995 Bill Coore and Ben Crenshaw design is more than 60 years newer than the second-youngest top 10 course (Augusta National, 1933) and it is the only top 10 course located between Oakmont on the east and the Monterey Peninsula on the west. 
 
-<br>
+While a number of classic courses that have been muscled out of the top third of the charts in recent years, LACC and Chicago have been rewarded for renovation work by trendy architects and successfully hosting USGA events. This list of comeback kids is not a long one even if you add National and Fishers Island, the only other pre-war venues that have managed to make moves into the upper tier in both rankings.
+
+***
 
 ### If this is the B-list, it's quite the B-list
 
@@ -84,14 +88,9 @@ map_multiple_courses(b_list)
 print_table_from_list(b_list)
 ```
 
-The courses in this group have been mainstays in in the top 20 - though generally not the top 10 - in at least one of the two rankings. Again, we see a split between major championship venues and clubs that have shunned the inconvenience and attention that come with hosting tournaments. We can also divide this group between the first three, which are consensus top 20 courses, and the rest, which are outside the top 20 in one of the two publications. 
+Most of the courses in this group have been mainstays in in the top 30 - though generally not the top 10 - in at least one of the two rankings. Like the blue blood category, this group is split between major championship venues and clubs that have shunned the inconvenience and attention that come with hosting tournaments. 
 
-Not long ago, the West course at Winged Foot would have qualified for the "blue blood" set, but the legendary US Open venue has fallen out of the top 10 in both magazines. Comments by Golf Digest raters, some of whom call it "less interesting" than the club's East Course and situated on a property that is "downright ordinary with little topographical character," are surprisingly negative for such a highly ranked course. Will a recently completed greens restoration and publicity from hosting the 2020 US Open vault it back into the top 10?
-
-Friar's Head, another Coore and Crenshaw collaboration, deserves kudos as the only post-World War II course aside from Sand Hills to maintain a position in the top 15 of either ranking.  
-
-
-<br>
+***
 
 ### Trouble in paradise, part 1: upper crust division
 
@@ -120,19 +119,7 @@ The bottom can fall out quickly. In 2001, Wannamoisett was ranked #35 by Golf Di
 
 ***
 
-### Returning to glory
-
-```{r, fig.asp = 0.55}
-map_multiple_courses(returners)
-
-print_table_from_list(returners)
-```
-
-While a number of classic courses that have been muscled out of the top third of the charts, two lucky clubs have been rewarded for renovation work by trendy architects and publicity bumps after hosting major amateur and professional events. This list of comeback kids is not a long one even if you add National and Fishers Island, the only other pre-war venues that have managed to make moves into the upper tier in both rankings.
-
-***
-
-### A few merely fantastic courses that you also won't be able to get on (old school)
+### A few merely fantastic courses that you won't be able to get on (old school)
 
 ```{r, fig.asp = 0.55}
 map_multiple_courses(c_list)
@@ -144,7 +131,7 @@ These highly rated private clubs, all east of the Mississippi River, tend to hav
 
 ***
 
-### A few merely fantastic courses that you also won't be able to get on (new school)
+### A few merely fantastic courses that you won't be able to get on (new school)
 
 ```{r, fig.asp = 0.55}
 map_multiple_courses(new_b_list)
@@ -253,4 +240,4 @@ latest_dropouts_rankings_for_table %>%
   knitr::kable(align = "c")
 ```
 
-Some of these were a long time coming (Laurel Valley, Torrey Pines, Colonial), while others represented short blips in the top 100 (Mountain Lake, Philadelphia Cricket). But Yale is definitely the saddest of all. It turns out that closing your course and [letting it grow over into a giant weed pasture](https://www.geoffshackelford.com/homepage/2020/7/2/as-feared-yale-golf-course-has-fallen-into-extreme-disrepair) is not good for your ratings.
+Some of these were a long time coming (Laurel Valley, Hazeltine, Colonial), while others represented short blips in the top 100 (Mountain Lake, Philadelphia Cricket). But Yale is definitely the saddest of all. It turns out that closing your course and [letting it grow over into a giant weed pasture](https://www.geoffshackelford.com/homepage/2020/7/2/as-feared-yale-golf-course-has-fallen-into-extreme-disrepair) is not good for your ratings. 
