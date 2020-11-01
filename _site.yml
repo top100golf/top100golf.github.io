@@ -11,6 +11,44 @@ navbar:
       href: the_ex_top_100.html
     - text: "Guided Tour"
       href: guided_tour.html
+    - text: "Archive"
+      menu: 
+      - text: "2019-2020"
+        href: rankings_2019_2020.html
+      - text: "2017-2018"
+        href: rankings_2017_2018.html
+      - text: "2015-2016"
+        href: rankings_2015_2016.html
+      - text: "2013-2014"
+        href: rankings_2013_2014.html
+      - text: "2011-2012"
+        href: rankings_2011_2012.html
+      - text: "2009-2010"
+        href: rankings_2009_2010.html
+      - text: "2007-2008"
+        href: rankings_2007_2008.html
+      - text: "2005-2006"
+        href: rankings_2005_2006.html
+      - text: "2003-2004"
+        href: rankings_2003_2004.html
+      - text: "2001-2002"
+        href: rankings_2001_2002.html
+      - text: "1999-2000"
+        href: rankings_1999_2000.html
+      - text: "1997-1998"
+        href: rankings_1997_1998.html
+      - text: "1995-1996"
+        href: rankings_1995_1996.html
+      - text: "1993-1994"
+        href: rankings_1993_1994.html
+      - text: "1991-1992"
+        href: rankings_1991_1992.html
+      - text: "1989-1990"
+        href: rankings_1989_1990.html
+      - text: "1987-1988"
+        href: rankings_1987_1988.html
+      - text: "1985-1986"
+        href: rankings_1985_1986.html
     - text: "About"
       href: about.html
 output:
