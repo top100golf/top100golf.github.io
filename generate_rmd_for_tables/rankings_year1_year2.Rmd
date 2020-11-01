@@ -11,7 +11,8 @@ source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
 ```{r, echo=FALSE}
 rmd_title <- str_remove(knitr::current_input(), ".Rmd")
 year1 <- as.numeric(str_extract(rmd_title, "\\d+"))
-year2 <- as.numeric(str_extract(rmd_title, "\\d+$"))
+if (year1 == 100) { year1 <- 2019 }
+year2 <- year1 + 1
 ```
 
 ---
@@ -74,7 +75,7 @@ biggest_drops <-
   arrange(chg_na) %>% 
   mutate(
     chg_na = -1 * chg_na, 
-    Current_Text = if_else(is.na(Current), "out", as.character(Current)),
+    Current_Text = if_else(is.na(Current), "unranked", as.character(Current)),
     chg_na_text = if_else(is.na(Current), str_c(chg_na, "+"), as.character(chg_na))
   ) %>% 
   transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous, " to ", Current_Text))
@@ -86,7 +87,7 @@ biggest_rises <-
   group_by(Publication) %>% 
   arrange(desc(chg_na)) %>% 
   mutate(
-    Previous_Text = if_else(is.na(Previous), "Out", as.character(Previous)),
+    Previous_Text = if_else(is.na(Previous), "unranked", as.character(Previous)),
     chg_na_text = if_else(is.na(Previous), str_c(chg_na, "+"), as.character(chg_na))
   ) %>% 
   transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous_Text, " to ", Current))

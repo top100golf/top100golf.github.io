@@ -1,39 +1,155 @@
----
-title: "America's top-ranked golf courses"
-#author: "Compiled by Skip Perry, October 2020"
-output: html_document
----
-
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = F)
 library(tidyverse)
 library(lubridate)
 library(gridExtra)
-#library(DT)
+library(geosphere)
 source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
 source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
 ```
 
-***
+```{r, echo=FALSE}
+rmd_title <- str_remove(knitr::current_input(), ".Rmd")
+year1 <- as.numeric(str_extract(rmd_title, "\\d+"))
+if (year1 == 100) { year1 <- 2019 }
+year2 <- year1 + 1
+```
 
-#### Sources:
-
-* [Golf Digest 2019-2020](https://subscribe.golfdigest.com/circulation/golfdigest/data/GD_0217_100GREATEST_rev2.pdf)
-* [Golf Magazine 2020](https://www.golfclubatlas.com/forum/index.php/topic,68928.msg1654198.html#msg1654198)
-
-#### Fast facts:
-
-* 132 courses are currently ranked
-* 68 courses appear on both lists
-* 64 courses appear on one list
+---
+title: America's top 100 golf courses, `r year1`-`r year2`
+---
 
 ***
 
-<br> 
+```{r}
+changes <- 
+  all_rankings %>% 
+  filter(Year %in% c(year1, year1 - 2)) %>% 
+  select(Ranking, Course, Publication, Year) %>% 
+  mutate(Year = if_else(Year == year1, "Current", "Previous")) %>% 
+  spread(Year, Ranking) %>% 
+  mutate(
+    chg = Previous - Current,
+    chg_na = case_when(
+      is.na(Previous) ~ 101 - Current,
+      is.na(Current) ~ Previous - 101,
+      TRUE ~ Previous - Current
+    )
+  )
+
+new_courses <- 
+  changes %>% 
+  filter(is.na(Previous)) %>% 
+  mutate(Ranking = Current) %>% 
+  arrange(Ranking)
+
+gone_courses <- 
+  changes %>% 
+  filter(is.na(Current)) %>% 
+  mutate(Ranking = Previous) %>% 
+  arrange(Ranking)
+
+course_list_to_text <- function(df, publication) {
+  df %>% 
+    filter(Publication == publication) %>% 
+    mutate(Course_Rank = str_c(Course, " (", Ranking, ")")) %>% 
+    pull(Course_Rank) %>% 
+    paste0(collapse = ", ")
+}
+
+new_golf_digest <-
+  course_list_to_text(df = new_courses, publication = "Golf Digest")
+
+new_golf_mag <-
+  course_list_to_text(df = new_courses, publication = "Golf Magazine")
+
+gone_golf_digest <-
+  course_list_to_text(df = gone_courses, publication = "Golf Digest")
+
+gone_golf_mag <-
+  course_list_to_text(df = gone_courses, publication = "Golf Magazine")
+
+biggest_drops <-
+  changes %>% 
+  group_by(Publication) %>% 
+  arrange(chg_na) %>% 
+  mutate(
+    chg_na = -1 * chg_na, 
+    Current_Text = if_else(is.na(Current), "unranked", as.character(Current)),
+    chg_na_text = if_else(is.na(Current), str_c(chg_na, "+"), as.character(chg_na))
+  ) %>% 
+  transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous, " to ", Current_Text))
+
+biggest_rises <-
+  changes %>% 
+  left_join(course_info %>% select(Course, Year_Designed), by = "Course") %>% 
+  filter(Year_Designed < year1 - 2) %>% 
+  group_by(Publication) %>% 
+  arrange(desc(chg_na)) %>% 
+  mutate(
+    Previous_Text = if_else(is.na(Previous), "unranked", as.character(Previous)),
+    chg_na_text = if_else(is.na(Previous), str_c(chg_na, "+"), as.character(chg_na))
+  ) %>% 
+  transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous_Text, " to ", Current))
+
+```
+
+### Summary of changes from previous rankings
+
+<u>New entries</u>
+
+* Golf Digest
+  * `r new_golf_digest`
+* Golf Magazine
+  * `r new_golf_mag`
+  
+<u>Fell off the ranking</u>
+
+* Golf Digest
+  * `r gone_golf_digest`
+* Golf Magazine
+  * `r gone_golf_mag`
+
+<u>Biggest improvements</u>
+
+  * Golf Digest
+    * `r biggest_rises %>% filter(Publication == "Golf Digest") %>% slice(1) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Digest") %>% slice(2) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Digest") %>% slice(3) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Digest") %>% slice(4) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Digest") %>% slice(5) %>% pull(value)`
+  * Golf Magazine
+    * `r biggest_rises %>% filter(Publication == "Golf Magazine") %>% slice(1) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Magazine") %>% slice(2) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Magazine") %>% slice(3) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Magazine") %>% slice(4) %>% pull(value)`
+    * `r biggest_rises %>% filter(Publication == "Golf Magazine") %>% slice(5) %>% pull(value)`
+
+<u>Biggest drops</u>
+
+  * Golf Digest
+    * `r biggest_drops %>% filter(Publication == "Golf Digest") %>% slice(1) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Digest") %>% slice(2) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Digest") %>% slice(3) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Digest") %>% slice(4) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Digest") %>% slice(5) %>% pull(value)`
+  * Golf Magazine
+    * `r biggest_drops %>% filter(Publication == "Golf Magazine") %>% slice(1) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Magazine") %>% slice(2) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Magazine") %>% slice(3) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Magazine") %>% slice(4) %>% pull(value)`
+    * `r biggest_drops %>% filter(Publication == "Golf Magazine") %>% slice(5) %>% pull(value)`
+    
+***
+
+## `r year1`-`r year2` rankings 
 
 ```{r, echo=FALSE}
 df <- 
-  current_rankings_spread %>% 
+  all_rankings %>% 
+  filter(Year == year1) %>% 
+  select(Ranking, Course, Publication) %>% 
+  spread(Publication, Ranking) %>% 
   mutate(Average = (`Golf Digest` + `Golf Magazine`) / 2) %>% 
   inner_join(course_info, by = "Course") %>% 
   transmute(
@@ -61,7 +177,3 @@ df %>%
   mutate(Course = str_c("[", Course, "](", base_url, str_replace_all(Course, "\\(|\\)|\\s|\\'", "-"), ".html)")) %>% 
   knitr::kable(align = "c")
 ```
-
-***
-
-Compiled by Skip Perry, October 2020

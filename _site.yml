@@ -13,8 +13,6 @@ navbar:
       href: guided_tour.html
     - text: "Archive"
       menu: 
-      - text: "2019-2020"
-        href: rankings_2019_2020.html
       - text: "2017-2018"
         href: rankings_2017_2018.html
       - text: "2015-2016"
