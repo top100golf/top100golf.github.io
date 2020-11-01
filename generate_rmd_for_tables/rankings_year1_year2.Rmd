@@ -52,7 +52,16 @@ gone_courses <-
 course_list_to_text <- function(df, publication) {
   df %>% 
     filter(Publication == publication) %>% 
-    mutate(Course_Rank = str_c(Course, " (", Ranking, ")")) %>% 
+    mutate(
+      Ranking_Label = case_when(
+        Ranking %% 10 == 1 ~ str_c(Ranking, "st"),
+        Ranking %% 10 == 2 ~ str_c(Ranking, "nd"),
+        Ranking %% 10 == 3 ~ str_c(Ranking, "rd"),
+        Ranking %% 10 %in% c(0, 4:9) ~ str_c(Ranking, "th"),
+        TRUE ~ NA_character_
+      ),
+      Course_Rank = str_c(Course, " (", Ranking_Label, ")")
+    ) %>% 
     pull(Course_Rank) %>% 
     paste0(collapse = ", ")
 }
@@ -74,11 +83,25 @@ biggest_drops <-
   group_by(Publication) %>% 
   arrange(chg_na) %>% 
   mutate(
+    Current_Label = case_when(
+      Current %% 10 == 1 ~ str_c(Current, "st"),
+      Current %% 10 == 2 ~ str_c(Current, "nd"),
+      Current %% 10 == 3 ~ str_c(Current, "rd"),
+      Current %% 10 %in% c(0, 4:9) ~ str_c(Current, "th"),
+      TRUE ~ NA_character_
+    ),
+    Previous_Label = case_when(
+      Previous %% 10 == 1 ~ str_c(Previous, "st"),
+      Previous %% 10 == 2 ~ str_c(Previous, "nd"),
+      Previous %% 10 == 3 ~ str_c(Previous, "rd"),
+      Previous %% 10 %in% c(0, 4:9) ~ str_c(Previous, "th"),
+      TRUE ~ NA_character_
+    ),
     chg_na = -1 * chg_na, 
-    Current_Text = if_else(is.na(Current), "unranked", as.character(Current)),
+    Current_Text = if_else(is.na(Current), "unranked", as.character(Current_Label)),
     chg_na_text = if_else(is.na(Current), str_c(chg_na, "+"), as.character(chg_na))
   ) %>% 
-  transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous, " to ", Current_Text))
+  transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous_Label, " to ", Current_Text))
 
 biggest_rises <-
   changes %>% 
@@ -87,11 +110,24 @@ biggest_rises <-
   group_by(Publication) %>% 
   arrange(desc(chg_na)) %>% 
   mutate(
-    Previous_Text = if_else(is.na(Previous), "unranked", as.character(Previous)),
+    Current_Label = case_when(
+      Current %% 10 == 1 ~ str_c(Current, "st"),
+      Current %% 10 == 2 ~ str_c(Current, "nd"),
+      Current %% 10 == 3 ~ str_c(Current, "rd"),
+      Current %% 10 %in% c(0, 4:9) ~ str_c(Current, "th"),
+      TRUE ~ NA_character_
+    ),
+    Previous_Label = case_when(
+      Previous %% 10 == 1 ~ str_c(Previous, "st"),
+      Previous %% 10 == 2 ~ str_c(Previous, "nd"),
+      Previous %% 10 == 3 ~ str_c(Previous, "rd"),
+      Previous %% 10 %in% c(0, 4:9) ~ str_c(Previous, "th"),
+      TRUE ~ NA_character_
+    ),
+    Previous_Text = if_else(is.na(Previous), "unranked", as.character(Previous_Label)),
     chg_na_text = if_else(is.na(Previous), str_c(chg_na, "+"), as.character(chg_na))
   ) %>% 
-  transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous_Text, " to ", Current))
-
+  transmute(value = str_c(Course, ": ", chg_na_text, " spots, ", Previous_Text, " to ", Current_Label))
 ```
 
 ### Summary of changes from previous rankings
