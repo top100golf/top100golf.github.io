@@ -1,7 +1,7 @@
 name: "Skip Perry"
 output_dir: "."
 navbar:
-  title: "America's Top 100 Golf Courses"
+  title: "Tracking the Top 100"
   left:
     - text: "Home"
       href: index.html
@@ -13,6 +13,8 @@ navbar:
       href: guided_tour.html
     - text: "Archive"
       menu: 
+      - text: "2019-2020"
+        href: rankings_2019_2020.html
       - text: "2017-2018"
         href: rankings_2017_2018.html
       - text: "2015-2016"
@@ -41,12 +43,6 @@ navbar:
         href: rankings_1993_1994.html
       - text: "1991-1992"
         href: rankings_1991_1992.html
-      - text: "1989-1990"
-        href: rankings_1989_1990.html
-      - text: "1987-1988"
-        href: rankings_1987_1988.html
-      - text: "1985-1986"
-        href: rankings_1985_1986.html
     - text: "About"
       href: about.html
 output:

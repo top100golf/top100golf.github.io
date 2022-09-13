@@ -17,15 +17,16 @@ source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
 
 *** 
 
-Unlike country club memberships, golf courses don't always get to keep their spots in the Top 100 for life. The following 143 courses used to be ranked in one of the two Top 100 lists but have dropped off. They have been sorted by the best rank achieved by that course, with ties broken by the number of times they appeared on a list.  
+Unlike country club memberships, golf courses don't always get to keep their spots in the Top 100 for life. The following `r ex_top_100_df %>% count()` courses used to be ranked in one of the two Top 100 lists but have dropped off. They have been sorted by the best rank achieved by that course, with ties broken by the number of times they appeared on a list.  
 
-As of 2015 there were about 16,000 golf courses in the USA, 275 of which have been ranked in the Top 100 at some point. Making even a single appearance is something to be proud of. 
+As of 2015 there were about 16,000 golf courses in the USA, `r current_top_100_df %>% bind_rows(ex_top_100_df) %>% count()` of which have been ranked in the Top 100 at some point. Making even a single appearance is something to be proud of. 
 
 ***
 
 ```{r}
 df <- 
   all_rankings %>% 
+  inner_join(ex_top_100_df, by = "Course") %>% 
   group_by(Course) %>% 
   mutate(
     max_year = max(Year),
@@ -36,7 +37,7 @@ df <-
   summarize(Ranking = min(Ranking)) %>% 
   ungroup() %>% 
   spread(Publication, Ranking) %>% 
-  filter(max_year < 2019) %>% 
+  #filter(max_year < 2021) %>% 
   mutate_at(vars(`Golf Digest`, `Golf Magazine`), ~ if_else(is.na(.), '-', as.character(.))) %>% 
   inner_join(
     course_info %>% 

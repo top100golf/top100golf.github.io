@@ -8,31 +8,25 @@ source("/Users/skipperry/Documents/golf_course_rankings/plot_rankings.R")
 source("/Users/skipperry/Documents/golf_course_rankings/course_categories.R")
 ```
 
+```{r, echo=FALSE}
+rmd_title <- str_remove(knitr::current_input(), ".Rmd")
+year1 <- as.numeric(str_extract(rmd_title, "\\d+"))
+if (year1 == 100) { year1 <- 2021 }
+year2 <- year1 + 1
+```
+
 ---
-title: America's top 100 golf courses
+title: America's top 100 golf courses, `r year1`-`r year2`
 ---
 
 ***
 
 ```{r}
-last_two_rankings <- 
-  tribble(
-    ~Publication, ~Year,
-    "Golf Digest", 2019,
-    "Golf Digest", 2021,
-    "Golf Magazine", 2017,
-    "Golf Magazine", 2019
-  ) %>% 
-  mutate(Order = c(1, 2, 1, 2))
-```
-
-```{r}
 changes <- 
   all_rankings %>% 
-  inner_join(last_two_rankings, by = c("Publication", "Year")) %>% 
-  select(Ranking, Course, Publication, Year, Order) %>% 
-  mutate(Year = if_else(Order == 2, "Current", "Previous")) %>% 
-  select(-Order) %>% 
+  filter(Year %in% c(year1, year1 - 2)) %>% 
+  select(Ranking, Course, Publication, Year) %>% 
+  mutate(Year = if_else(Year == year1, "Current", "Previous")) %>% 
   spread(Year, Ranking) %>% 
   mutate(
     chg = Previous - Current,
@@ -112,9 +106,7 @@ biggest_drops <-
 biggest_rises <-
   changes %>% 
   left_join(course_info %>% select(Course, Year_Designed), by = "Course") %>% 
-  #### NOTE HARDCODED 2019
-  filter(Year_Designed < 2019) %>% 
-  #### NOTE HARDCODED 2019
+  filter(Year_Designed < year1 - 2) %>% 
   group_by(Publication) %>% 
   arrange(desc(chg_na)) %>% 
   mutate(
@@ -186,13 +178,12 @@ biggest_rises <-
     
 ***
 
-## Latest rankings 
+## `r year1`-`r year2` rankings 
 
 ```{r, echo=FALSE}
 df <- 
   all_rankings %>% 
-  inner_join(last_two_rankings, by = c("Publication", "Year")) %>% 
-  filter(Order == 2) %>% 
+  filter(Year == year1) %>% 
   select(Ranking, Course, Publication) %>% 
   spread(Publication, Ranking) %>% 
   mutate(Average = (`Golf Digest` + `Golf Magazine`) / 2) %>% 
@@ -212,11 +203,7 @@ df <-
   ) %>% 
   arrange(Average, Top_Rating) %>% 
   select(-Top_Rating) %>% 
-  mutate_at(
-    vars(`Golf Digest`, `Golf Magazine`, `Average`), 
-    ~ if_else(is.na(.), '-', as.character(.))
-  ) %>% 
-  rename(`Golf Digest 2021` = `Golf Digest`, `Golf Magazine 2019` = `Golf Magazine`)
+  mutate_at(vars(`Golf Digest`, `Golf Magazine`, `Average`), ~ if_else(is.na(.), '-', as.character(.)))
 
 base_url <- "https://top100golf.github.io/"
 base_url_rep <- rep(base_url, nrow(df))
