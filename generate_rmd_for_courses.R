@@ -22,8 +22,8 @@ course_list <-
 
 # course_list <- ex_top_100
 
-#course_list <-
-#  course_list[1:2]
+course_list <-
+  course_list[1:10]
 
 for (course in course_list) {
   readLines("/Users/skipperry/Documents/golf_course_rankings/single_course.Rmd") %>% 
