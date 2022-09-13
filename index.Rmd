@@ -1,5 +1,6 @@
 ---
-title: "Exploring America's Top 100 Golf Courses"
+title: "Tracking the Top 100"
+subtitle: "Exploring America's Top 100 Golf Courses"
 ---
 
 ***
