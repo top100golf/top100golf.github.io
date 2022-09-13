@@ -22,6 +22,11 @@ current_rankings <-
   spread(Publication, Ranking) %>% 
   mutate(Average = (`Golf Digest` + `Golf Magazine`) / 2) %>% 
   inner_join(course_info, by = "Course") %>% 
+  mutate(
+    Designer1 = if_else(Designer1 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer1),
+    Designer2 = if_else(Designer2 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer2),
+    Designer3 = if_else(Designer3 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer3)
+  ) %>% 
   transmute(
     Course, Location = str_c(City, ", ", State), 
     Designers = case_when(
@@ -50,6 +55,11 @@ best_rankings <-
   spread(Publication, Ranking) %>% 
   mutate(Average = (`Golf Digest` + `Golf Magazine`) / 2) %>% 
   inner_join(course_info, by = "Course") %>% 
+  mutate(
+    Designer1 = if_else(Designer1 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer1),
+    Designer2 = if_else(Designer2 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer2),
+    Designer3 = if_else(Designer3 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer3)
+  )  %>% 
   transmute(
     Course, Location = str_c(City, ", ", State), 
     Designers = case_when(
@@ -78,6 +88,11 @@ course_listing_for_designers <-
 prolific_designers <- 
   course_info %>% 
   select(Course, Designer1, Designer2, Designer3) %>% 
+  mutate(
+    Designer1 = if_else(Designer1 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer1),
+    Designer2 = if_else(Designer2 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer2),
+    Designer3 = if_else(Designer3 == "Robert Trent Jones", "Robert Trent Jones Sr.", Designer3)
+  )  %>% 
   pivot_longer(Designer1:Designer3, names_to = "key", values_to = "Designer") %>% 
   filter(!is.na(Designer)) %>% 
   inner_join(course_listing_for_designers %>% select(Course), by = "Course") %>% 
@@ -173,7 +188,7 @@ designer_of_interest %>% doi_course_table()
 
 
 ```{r, out.width = 150}
-designer_of_interest <- "Robert Trent Jones"
+designer_of_interest <- "Robert Trent Jones Sr."
 designer_of_interest %>% doi_photo()
 ```
 
