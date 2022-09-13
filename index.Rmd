@@ -5,8 +5,6 @@ subtitle: "Exploring America's Top 100 Golf Courses"
 
 ***
 
-## Under construction
-
-```{r, echo=FALSE, out.width = "70%"}
-knitr::include_graphics("images/construction.jpg")
+```{r, echo=FALSE, out.width = "80%"}
+knitr::include_graphics("images/pv5.jpg")
 ```
