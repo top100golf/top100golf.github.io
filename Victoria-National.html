@@ -13,17 +13,25 @@
 
 <title>Victoria National Golf Club</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/navigation-1.1/tabsets.js"></script>
 <link href="site_libs/highlightjs-9.12.0/default.css" rel="stylesheet" />
 <script src="site_libs/highlightjs-9.12.0/highlight.js"></script>
-<link href="site_libs/anchor-sections-1.0/anchor-sections.css" rel="stylesheet" />
-<script src="site_libs/anchor-sections-1.0/anchor-sections.js"></script>
 
 <style type="text/css">
   code{white-space: pre-wrap;}
@@ -35,11 +43,6 @@
     </style>
 
 <style type="text/css">code{white-space: pre;}</style>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 <script type="text/javascript">
 if (window.hljs) {
   hljs.configure({languages: []});
@@ -52,32 +55,8 @@ if (window.hljs) {
 
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
+
 
 <link rel="stylesheet" href="styles.css" type="text/css" />
 
@@ -88,10 +67,6 @@ h6 {
   max-width: 940px;
   margin-left: auto;
   margin-right: auto;
-}
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
 }
 img {
   max-width:100%;
@@ -108,40 +83,16 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+details > summary > p:only-child {
+  display: inline;
+}
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 51px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h2 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h3 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h4 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h5 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
-.section h6 {
-  padding-top: 56px;
-  margin-top: -56px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -169,7 +120,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -181,7 +132,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -192,10 +143,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -207,7 +171,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -274,26 +237,92 @@ $(document).ready(function () {
 <div class="navbar navbar-default  navbar-fixed-top" role="navigation">
   <div class="container">
     <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-bs-toggle="collapse" data-target="#navbar" data-bs-target="#navbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
-      <a class="navbar-brand" href="index.html">America's Top 100 Golf Courses</a>
+      <a class="navbar-brand" href="index.html">Tracking the Top 100</a>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
   <a href="index.html">Home</a>
 </li>
-<li>
-  <a href="the_top_100.html">The Top 100</a>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    The Top 100
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="the_top_100.html">The Top 100</a>
+    </li>
+    <li>
+      <a href="the_ex_top_100.html">The Ex-Top 100</a>
+    </li>
+  </ul>
 </li>
 <li>
-  <a href="the_ex_top_100.html">The Ex-Top 100</a>
+  <a href="designers.html">Designers</a>
 </li>
 <li>
   <a href="guided_tour.html">Guided Tour</a>
+</li>
+<li class="dropdown">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Archive
+     
+    <span class="caret"></span>
+  </a>
+  <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="rankings_2019_2020.html">2019-2020</a>
+    </li>
+    <li>
+      <a href="rankings_2017_2018.html">2017-2018</a>
+    </li>
+    <li>
+      <a href="rankings_2015_2016.html">2015-2016</a>
+    </li>
+    <li>
+      <a href="rankings_2013_2014.html">2013-2014</a>
+    </li>
+    <li>
+      <a href="rankings_2011_2012.html">2011-2012</a>
+    </li>
+    <li>
+      <a href="rankings_2009_2010.html">2009-2010</a>
+    </li>
+    <li>
+      <a href="rankings_2007_2008.html">2007-2008</a>
+    </li>
+    <li>
+      <a href="rankings_2005_2006.html">2005-2006</a>
+    </li>
+    <li>
+      <a href="rankings_2003_2004.html">2003-2004</a>
+    </li>
+    <li>
+      <a href="rankings_2001_2002.html">2001-2002</a>
+    </li>
+    <li>
+      <a href="rankings_1999_2000.html">1999-2000</a>
+    </li>
+    <li>
+      <a href="rankings_1997_1998.html">1997-1998</a>
+    </li>
+    <li>
+      <a href="rankings_1995_1996.html">1995-1996</a>
+    </li>
+    <li>
+      <a href="rankings_1993_1994.html">1993-1994</a>
+    </li>
+    <li>
+      <a href="rankings_1991_1992.html">1991-1992</a>
+    </li>
+  </ul>
 </li>
 <li>
   <a href="about.html">About</a>
@@ -306,7 +335,7 @@ $(document).ready(function () {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -320,7 +349,7 @@ $(document).ready(function () {
 <div id="rankings-over-time" class="section level3">
 <h3>Rankings over time</h3>
 <p><br></p>
-<p><img src="Victoria-National_files/figure-html/unnamed-chunk-3-1.png" width="672" /></p>
+<p><img src="Victoria-National_files/figure-html/unnamed-chunk-3-1.png" width="768" /></p>
 <hr />
 </div>
 <div id="fast-facts" class="section level3">
@@ -333,28 +362,30 @@ $(document).ready(function () {
 <li>Best ranking:
 <ul>
 <li>Golf Digest: 21 (2005)</li>
-<li>Golf Magazine: Unranked (1999, 2001, 2003, 2005, 2007, 2009, 2011, 2013, 2015, 2017, 2019)</li>
+<li>Golf Magazine: Unranked (1999, 2001, 2003, 2005, 2007, 2009, 2011,
+2013, 2015, 2017, 2019)</li>
 </ul></li>
 <li>Worst ranking:
 <ul>
 <li>Golf Digest: Unranked (1999)</li>
-<li>Golf Magazine: Unranked (1999, 2001, 2003, 2005, 2007, 2009, 2011, 2013, 2015, 2017, 2019)</li>
+<li>Golf Magazine: Unranked (1999, 2001, 2003, 2005, 2007, 2009, 2011,
+2013, 2015, 2017, 2019)</li>
 </ul></li>
 <li>Closest currently ranked courses:
 <ul>
 <li>Canyata, 102 miles</li>
 <li>Valhalla, 106 miles</li>
-<li>Crooked Stick, 155 miles</li>
 <li>St. Louis, 169 miles</li>
 <li>Camargo, 185 miles</li>
+<li>Moraine, 211 miles</li>
 </ul></li>
 <li>Closest formerly ranked courses:
 <ul>
 <li>Pete Dye at French Lick, 58 miles</li>
+<li>Crooked Stick, 155 miles</li>
 <li>Old Warson, 169 miles</li>
 <li>Bellerive, 173 miles</li>
 <li>Coldstream, 182 miles</li>
-<li>NCR (South), 211 miles</li>
 </ul></li>
 </ul>
 </div>
@@ -386,7 +417,7 @@ $(document).ready(function () {
 
 $(document).ready(function () {
   $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
+    $(this).parent().toggleClass('nav-tabs-open');
   });
 });
 </script>

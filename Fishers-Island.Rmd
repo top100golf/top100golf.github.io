@@ -33,7 +33,9 @@ subtitle: `r subtitle_var`
 
 ```{r, echo=FALSE}
 year_designed <- 
-  course_info %>% filter(Course == course_of_interest) %>% pull(Year_Designed)
+  course_info %>% 
+  filter(Course == course_of_interest) %>% 
+  pull(Year_Designed)
 
 blank_table <- 
   tibble(
