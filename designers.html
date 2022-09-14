@@ -13,7 +13,7 @@
 
 <title>Prolific designers</title>
 
-<script src="site_libs/header-attrs-2.14/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -142,11 +142,15 @@ $(document).ready(function () {
     href = "index.html";
   var menuAnchor = $('a[href="' + href + '"]');
 
-  // mark it active
-  menuAnchor.tab('show');
-
-  // if it's got a parent navbar menu mark it active as well
-  menuAnchor.closest('li.dropdown').addClass('active');
+  // mark the anchor link active (and if it's in a dropdown, also mark that active)
+  var dropdown = menuAnchor.closest('li.dropdown');
+  if (window.bootstrap) { // Bootstrap 4+
+    menuAnchor.addClass('active');
+    dropdown.find('> .dropdown-toggle').addClass('active');
+  } else { // Bootstrap 3
+    menuAnchor.parent().addClass('active');
+    dropdown.addClass('active');
+  }
 
   // Navbar adjustments
   var navHeight = $(".navbar").first().height() + 15;
@@ -350,15 +354,15 @@ $(document).ready(function () {
 <h3>Tom Fazio</h3>
 <div id="courses-13-current-17-previous" class="section level4">
 <h4>30 courses (13 current, 17 previous)</h4>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="45%" />
-<col width="10%" />
-<col width="6%" />
+<col width="21%" />
+<col width="15%" />
 <col width="9%" />
-<col width="10%" />
-<col width="8%" />
-<col width="9%" />
+<col width="13%" />
+<col width="15%" />
+<col width="11%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -707,13 +711,13 @@ href="https://top100golf.github.io/Vintage--Mountain-.html">Vintage
 <h4>21 courses (5 current, 16 previous)</h4>
 <table>
 <colgroup>
-<col width="43%" />
-<col width="11%" />
-<col width="7%" />
-<col width="9%" />
+<col width="18%" />
+<col width="16%" />
 <col width="10%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="15%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -961,13 +965,13 @@ href="https://top100golf.github.io/Concession.html">Concession</a></td>
 <h4>19 courses (12 current, 7 previous)</h4>
 <table>
 <colgroup>
-<col width="38%" />
-<col width="11%" />
-<col width="7%" />
+<col width="13%" />
+<col width="15%" />
 <col width="10%" />
-<col width="11%" />
-<col width="9%" />
-<col width="10%" />
+<col width="15%" />
+<col width="16%" />
+<col width="13%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1188,13 +1192,13 @@ href="https://top100golf.github.io/Skokie.html">Skokie</a></td>
 <h4>18 courses (3 current, 15 previous)</h4>
 <table>
 <colgroup>
-<col width="43%" />
+<col width="18%" />
+<col width="14%" />
 <col width="10%" />
-<col width="7%" />
-<col width="10%" />
-<col width="11%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="15%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1410,13 +1414,13 @@ href="https://top100golf.github.io/Wigwam--Gold-.html">Wigwam
 <h4>17 courses (9 current, 8 previous)</h4>
 <table>
 <colgroup>
-<col width="43%" />
-<col width="11%" />
-<col width="6%" />
-<col width="9%" />
+<col width="19%" />
+<col width="16%" />
 <col width="10%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="15%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1622,15 +1626,15 @@ River (Pete Dye)</a></td>
 <h3>A.W. Tillinghast</h3>
 <div id="courses-12-current-1-previous" class="section level4">
 <h4>13 courses (12 current, 1 previous)</h4>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="40%" />
-<col width="11%" />
-<col width="7%" />
+<col width="15%" />
+<col width="15%" />
 <col width="10%" />
-<col width="11%" />
-<col width="9%" />
-<col width="10%" />
+<col width="14%" />
+<col width="16%" />
+<col width="12%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1795,13 +1799,13 @@ Cricket</a></td>
 <h4>11 courses (7 current, 4 previous)</h4>
 <table>
 <colgroup>
-<col width="44%" />
-<col width="9%" />
-<col width="7%" />
+<col width="19%" />
+<col width="13%" />
 <col width="10%" />
-<col width="11%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="15%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -1941,13 +1945,13 @@ href="https://top100golf.github.io/Fairfield.html">Fairfield</a></td>
 <h4>10 courses (0 current, 10 previous)</h4>
 <table>
 <colgroup>
-<col width="39%" />
-<col width="11%" />
-<col width="7%" />
+<col width="15%" />
+<col width="16%" />
 <col width="10%" />
-<col width="11%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="16%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2076,15 +2080,15 @@ href="https://top100golf.github.io/BallenIsles--East-.html">BallenIsles
 <h3>Bill Coore &amp; Ben Crenshaw</h3>
 <div id="courses-7-current-2-previous" class="section level4">
 <h4>9 courses (7 current, 2 previous)</h4>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="40%" />
+<col width="15%" />
+<col width="14%" />
 <col width="10%" />
-<col width="7%" />
-<col width="10%" />
-<col width="11%" />
-<col width="9%" />
-<col width="10%" />
+<col width="15%" />
+<col width="16%" />
+<col width="12%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2205,15 +2209,15 @@ href="https://top100golf.github.io/Kapalua--Plantation-.html">Kapalua
 <h3>Tom Doak</h3>
 <div id="courses-6-current-3-previous" class="section level4">
 <h4>9 courses (6 current, 3 previous)</h4>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="39%" />
-<col width="9%" />
-<col width="7%" />
+<col width="14%" />
+<col width="13%" />
 <col width="11%" />
-<col width="12%" />
-<col width="9%" />
-<col width="10%" />
+<col width="15%" />
+<col width="17%" />
+<col width="13%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2332,15 +2336,15 @@ Pointe</a></td>
 <h3>C.B. Macdonald</h3>
 <div id="courses-6-current-1-previous" class="section level4">
 <h4>7 courses (6 current, 1 previous)</h4>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="39%" />
-<col width="11%" />
-<col width="7%" />
+<col width="15%" />
+<col width="15%" />
 <col width="10%" />
-<col width="11%" />
-<col width="9%" />
-<col width="10%" />
+<col width="15%" />
+<col width="16%" />
+<col width="12%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2439,13 +2443,13 @@ href="https://top100golf.github.io/Yale.html">Yale</a></td>
 <h4>7 courses (0 current, 7 previous)</h4>
 <table>
 <colgroup>
-<col width="35%" />
-<col width="12%" />
-<col width="8%" />
 <col width="11%" />
-<col width="12%" />
-<col width="9%" />
-<col width="10%" />
+<col width="17%" />
+<col width="11%" />
+<col width="15%" />
+<col width="16%" />
+<col width="13%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2542,13 +2546,13 @@ href="https://top100golf.github.io/The-Bridge.html">The Bridge</a></td>
 <h4>7 courses (3 current, 4 previous)</h4>
 <table>
 <colgroup>
-<col width="41%" />
-<col width="12%" />
-<col width="7%" />
+<col width="16%" />
+<col width="17%" />
 <col width="10%" />
-<col width="11%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="15%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2645,15 +2649,15 @@ href="https://top100golf.github.io/Lehigh.html">Lehigh</a></td>
 <h3>Alister MacKenzie</h3>
 <div id="courses-5-current-1-previous" class="section level4">
 <h4>6 courses (5 current, 1 previous)</h4>
-<table>
+<table style="width:100%;">
 <colgroup>
-<col width="43%" />
-<col width="8%" />
-<col width="7%" />
+<col width="18%" />
+<col width="12%" />
 <col width="10%" />
-<col width="11%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="16%" />
+<col width="12%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2734,22 +2738,22 @@ href="https://top100golf.github.io/Ohio-State--Scarlet-.html">Ohio State
 </tr>
 </tbody>
 </table>
-<p><img src="designers/Jay%20Morrish.png" width="150" /><img src="designers/Tom%20Weiskopf.png" width="150" /></p>
+<p><img src="designers/Jay%20Morrish.png" width="150" /></p>
 </div>
 </div>
-<div id="jay-morrish-tom-weiskopf" class="section level3">
-<h3>Jay Morrish &amp; Tom Weiskopf</h3>
+<div id="jay-morrish" class="section level3">
+<h3>Jay Morrish</h3>
 <div id="courses-1-current-5-previous" class="section level4">
 <h4>6 courses (1 current, 5 previous)</h4>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="42%" />
-<col width="8%" />
-<col width="7%" />
-<col width="10%" />
+<col width="17%" />
 <col width="11%" />
-<col width="9%" />
 <col width="10%" />
+<col width="15%" />
+<col width="16%" />
+<col width="13%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2837,15 +2841,15 @@ Glen</a></td>
 <h3>Perry Maxwell</h3>
 <div id="courses-4-current-2-previous" class="section level4">
 <h4>6 courses (4 current, 2 previous)</h4>
-<table style="width:100%;">
+<table>
 <colgroup>
-<col width="40%" />
-<col width="9%" />
-<col width="7%" />
+<col width="15%" />
+<col width="13%" />
 <col width="10%" />
-<col width="11%" />
-<col width="9%" />
-<col width="10%" />
+<col width="15%" />
+<col width="16%" />
+<col width="13%" />
+<col width="14%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -2925,6 +2929,102 @@ href="https://top100golf.github.io/Ohio-State--Scarlet-.html">Ohio State
 </tr>
 </tbody>
 </table>
+<p><img src="designers/Tom%20Weiskopf.png" width="150" /></p>
+</div>
+</div>
+<div id="tom-weiskopf" class="section level3">
+<h3>Tom Weiskopf</h3>
+<div id="courses-1-current-5-previous-1" class="section level4">
+<h4>6 courses (1 current, 5 previous)</h4>
+<table>
+<colgroup>
+<col width="17%" />
+<col width="11%" />
+<col width="10%" />
+<col width="15%" />
+<col width="16%" />
+<col width="13%" />
+<col width="14%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="center">Course</th>
+<th align="center">Location</th>
+<th align="center">Year Designed</th>
+<th align="center">Golf Digest Current</th>
+<th align="center">Golf Magazine Current</th>
+<th align="center">Golf Digest Best</th>
+<th align="center">Golf Magazine Best</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Double-Eagle.html">Double
+Eagle</a></td>
+<td align="center">Galena, OH</td>
+<td align="center">1992</td>
+<td align="center">96</td>
+<td align="center">-</td>
+<td align="center">56</td>
+<td align="center">41</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Troon.html">Troon</a></td>
+<td align="center">Scottsdale, AZ</td>
+<td align="center">1986</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">41</td>
+<td align="center">44</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Forest-Highlands.html">Forest
+Highlands</a></td>
+<td align="center">Flagstaff, AZ</td>
+<td align="center">1988</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">38</td>
+<td align="center">55</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Troon-North--Monument-.html">Troon
+North (Monument)</a></td>
+<td align="center">Scottsdale, AZ</td>
+<td align="center">1990</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">65</td>
+<td align="center">58</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Forest-Dunes.html">Forest
+Dunes</a></td>
+<td align="center">Roscommon, MI</td>
+<td align="center">2002</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">99</td>
+<td align="center">72</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Shadow-Glen.html">Shadow
+Glen</a></td>
+<td align="center">Olathe, KS</td>
+<td align="center">1989</td>
+<td align="center">-</td>
+<td align="center">-</td>
+<td align="center">82</td>
+<td align="center">-</td>
+</tr>
+</tbody>
+</table>
 <p><img src="designers/Bob%20Cupp.png" width="150" /></p>
 </div>
 </div>
@@ -2934,13 +3034,13 @@ href="https://top100golf.github.io/Ohio-State--Scarlet-.html">Ohio State
 <h4>5 courses (0 current, 5 previous)</h4>
 <table>
 <colgroup>
-<col width="45%" />
-<col width="8%" />
-<col width="7%" />
-<col width="9%" />
+<col width="20%" />
+<col width="12%" />
 <col width="10%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="15%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
@@ -3020,13 +3120,13 @@ Waverly</a></td>
 <h4>5 courses (0 current, 5 previous)</h4>
 <table>
 <colgroup>
-<col width="39%" />
-<col width="11%" />
-<col width="7%" />
+<col width="15%" />
+<col width="16%" />
 <col width="10%" />
-<col width="11%" />
-<col width="8%" />
-<col width="9%" />
+<col width="14%" />
+<col width="16%" />
+<col width="12%" />
+<col width="13%" />
 </colgroup>
 <thead>
 <tr class="header">
