@@ -1,7 +1,0 @@
----
-title: "Contact"
----
-
-LinkedIn: <a href="https://www.linkedin.com/in/skip-perry/" target="_blank">https://www.linkedin.com/in/skip-perry/</a>
-
-Email: golfcourserankings@gmail.com 
