@@ -6,15 +6,13 @@ navbar:
     - text: "Home"
       href: index.html
     - text: "The Top 100"
-      menu:
-      - text: "The Top 100"
-        href: the_top_100.html
-      - text: "The Ex-Top 100"
-        href: the_ex_top_100.html
+      href: the_top_100.html
+    - text: "The Ex-Top 100"
+      href: the_ex_top_100.html
     - text: "Designers"
       href: designers.html
-    - text: "Guided Tour"
-      href: guided_tour.html
+    - text: "States"
+      href: states.html
     - text: "Archive"
       menu: 
       - text: "2019-2020"
