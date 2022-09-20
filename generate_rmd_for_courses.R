@@ -16,7 +16,7 @@ course_list <-
   pull()
 
 # individual courses to re-run
-# course_list <- c("", "")
+course_list <- c("Tullymore (St. Ives)")
 
 # course_list <- latest_dropouts
 
