@@ -13,7 +13,7 @@
 
 <title>America’s top 100 golf courses</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -179,8 +179,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -188,16 +188,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -352,11 +345,8 @@ Pasatiempo (98th)</li>
 </ul></li>
 <li>Golf Magazine
 <ul>
-<li>Ohoopee (32nd), Pikewood National (60th), Gamble Sands (61st),
-Congaree (72nd), White Bear (76th), St. Louis (78th), Kingsley (79th),
-Sheep Ranch (80th), Prairie Club (82nd), Hollywood (83rd), Glens Falls
-(86th), Lawsonia (87th), Wolf Point Ranch (88th), Mountain Ridge (90th),
-Pinehurst (No. 4) (92nd), Palmetto (93rd), Mammoth Dunes (96th)</li>
+<li>Congressional (55th), CapRock Ranch (59th), Scioto (73rd), Davenport
+(95th), Brookside (96th)</li>
 </ul></li>
 </ul>
 <p><u>Fell off the ranking</u></p>
@@ -368,12 +358,8 @@ Pinehurst (No. 4) (92nd), Palmetto (93rd), Mammoth Dunes (96th)</li>
 </ul></li>
 <li>Golf Magazine
 <ul>
-<li>Medinah (No. 3) (51st), Spyglass Hill (54th), Yale (55th), East Lake
-(70th), Erin Hills (74th), Interlachen (75th), Congressional (77th),
-Scioto (79th), Fox Chapel (81st), Philadelphia Cricket (86th), Torrey
-Pines (South) (87th), Boston (88th), Colonial (92nd), Hazeltine National
-(93rd), Chambers Bay (98th), Mountain Lake (99th), Blackwolf Run
-(100th)</li>
+<li>Wolf Point Ranch (88th), Mountain Ridge (90th), Mammoth Dunes
+(96th), Sebonack (97th), Baltusrol (Upper) (99th)</li>
 </ul></li>
 </ul>
 <p><u>Biggest improvements</u></p>
@@ -388,11 +374,11 @@ Pines (South) (87th), Boston (88th), Colonial (92nd), Hazeltine National
 </ul></li>
 <li>Golf Magazine
 <ul>
-<li>Ohoopee: 69+ spots, unranked to 32nd</li>
-<li>Sleepy Hollow: 60 spots, 96th to 36th</li>
-<li>Pikewood National: 41+ spots, unranked to 60th</li>
-<li>Gamble Sands: 40+ spots, unranked to 61st</li>
-<li>Congaree: 29+ spots, unranked to 72nd</li>
+<li>Congressional: 46+ spots, unranked to 55th</li>
+<li>Baltusrol (Lower): 28 spots, 69th to 41st</li>
+<li>Scioto: 28+ spots, unranked to 73rd</li>
+<li>Oakland Hills: 16 spots, 35th to 19th</li>
+<li>Cherry Hills: 12 spots, 100th to 88th</li>
 </ul></li>
 </ul>
 <p><u>Biggest drops</u></p>
@@ -407,11 +393,11 @@ Pines (South) (87th), Boston (88th), Colonial (92nd), Hazeltine National
 </ul></li>
 <li>Golf Magazine
 <ul>
-<li>Medinah (No. 3): 50+ spots, 51st to unranked</li>
-<li>Spyglass Hill: 47+ spots, 54th to unranked</li>
-<li>Yale: 46+ spots, 55th to unranked</li>
-<li>Sand Valley: 39 spots, 52nd to 91st</li>
-<li>Baltusrol (Lower): 32 spots, 37th to 69th</li>
+<li>Gamble Sands: 21 spots, 61st to 82nd</li>
+<li>Sheep Ranch: 17 spots, 80th to 97th</li>
+<li>Congaree: 13 spots, 72nd to 85th</li>
+<li>Wolf Point Ranch: 13+ spots, 88th to unranked</li>
+<li>Baltimore: 12 spots, 75th to 87th</li>
 </ul></li>
 </ul>
 <hr />
@@ -433,7 +419,7 @@ Pines (South) (87th), Boston (88th), Colonial (92nd), Hazeltine National
 <th align="center">Location</th>
 <th align="center">Year Designed</th>
 <th align="center">Golf Digest 2021</th>
-<th align="center">Golf Magazine 2019</th>
+<th align="center">Golf Magazine 2021</th>
 <th align="center">Average</th>
 </tr>
 </thead>
@@ -475,8 +461,8 @@ National</a></td>
 <td align="center">Augusta, GA</td>
 <td align="center">1933</td>
 <td align="center">2</td>
-<td align="center">6</td>
-<td align="center">4</td>
+<td align="center">7</td>
+<td align="center">4.5</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -512,20 +498,10 @@ href="https://top100golf.github.io/Sand-Hills.html">Sand Hills</a></td>
 <td align="center">Mullen, NE</td>
 <td align="center">1995</td>
 <td align="center">10</td>
-<td align="center">7</td>
-<td align="center">8.5</td>
+<td align="center">6</td>
+<td align="center">8</td>
 </tr>
 <tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Pebble-Beach.html">Pebble
-Beach</a></td>
-<td align="center">Pebble Beach, CA</td>
-<td align="center">1919</td>
-<td align="center">8</td>
-<td align="center">10</td>
-<td align="center">9</td>
-</tr>
-<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Fishers-Island.html">Fishers
 Island</a></td>
@@ -535,34 +511,63 @@ Island</a></td>
 <td align="center">9</td>
 <td align="center">9</td>
 </tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Pebble-Beach.html">Pebble
+Beach</a></td>
+<td align="center">Pebble Beach, CA</td>
+<td align="center">1919</td>
+<td align="center">8</td>
+<td align="center">11</td>
+<td align="center">9.5</td>
+</tr>
 <tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Chicago.html">Chicago</a></td>
+<td align="center">Wheaton, IL</td>
+<td align="center">1894</td>
+<td align="center">13</td>
+<td align="center">13</td>
+<td align="center">13</td>
+</tr>
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Winged-Foot--West-.html">Winged Foot
 (West)</a></td>
 <td align="center">Mamaroneck, NY</td>
 <td align="center">1923</td>
 <td align="center">12</td>
-<td align="center">15</td>
-<td align="center">13.5</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Chicago.html">Chicago</a></td>
-<td align="center">Wheaton, IL</td>
-<td align="center">1894</td>
-<td align="center">13</td>
+<td align="center">16</td>
 <td align="center">14</td>
-<td align="center">13.5</td>
 </tr>
 <tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Los-Angeles--North-.html">Los Angeles
+(North)</a></td>
+<td align="center">Los Angeles, CA</td>
+<td align="center">1921</td>
+<td align="center">19</td>
+<td align="center">10</td>
+<td align="center">14.5</td>
+</tr>
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Friar-s-Head.html">Friar’s
 Head</a></td>
 <td align="center">Baiting Hollow, NY</td>
 <td align="center">2002</td>
 <td align="center">16</td>
-<td align="center">13</td>
-<td align="center">14.5</td>
+<td align="center">15</td>
+<td align="center">15.5</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Seminole.html">Seminole</a></td>
+<td align="center">Juno Beach, FL</td>
+<td align="center">1929</td>
+<td align="center">11</td>
+<td align="center">21</td>
+<td align="center">16</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -571,27 +576,8 @@ Downs</a></td>
 <td align="center">Frankfort, MI</td>
 <td align="center">1931</td>
 <td align="center">14</td>
-<td align="center">16</td>
-<td align="center">15</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Seminole.html">Seminole</a></td>
-<td align="center">Juno Beach, FL</td>
-<td align="center">1929</td>
-<td align="center">11</td>
 <td align="center">20</td>
-<td align="center">15.5</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Los-Angeles--North-.html">Los Angeles
-(North)</a></td>
-<td align="center">Los Angeles, CA</td>
-<td align="center">1921</td>
-<td align="center">19</td>
-<td align="center">12</td>
-<td align="center">15.5</td>
+<td align="center">17</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -600,8 +586,8 @@ Dunes</a></td>
 <td align="center">Bandon, OR</td>
 <td align="center">2001</td>
 <td align="center">18</td>
-<td align="center">19</td>
-<td align="center">18.5</td>
+<td align="center">17</td>
+<td align="center">17.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -609,8 +595,8 @@ href="https://top100golf.github.io/Riviera.html">Riviera</a></td>
 <td align="center">Pacific Palisades, CA</td>
 <td align="center">1926</td>
 <td align="center">22</td>
-<td align="center">17</td>
-<td align="center">19.5</td>
+<td align="center">14</td>
+<td align="center">18</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -624,15 +610,25 @@ Club</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
+href="https://top100golf.github.io/Oakland-Hills.html">Oakland
+Hills</a></td>
+<td align="center">Bloomfield Hills, MI</td>
+<td align="center">1918</td>
+<td align="center">21</td>
+<td align="center">19</td>
+<td align="center">20</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
 href="https://top100golf.github.io/Pinehurst--No.-2-.html">Pinehurst
 (No. 2)</a></td>
 <td align="center">Pinehurst, NC</td>
 <td align="center">1935</td>
 <td align="center">29</td>
-<td align="center">11</td>
-<td align="center">20</td>
+<td align="center">12</td>
+<td align="center">20.5</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Prairie-Dunes.html">Prairie
 Dunes</a></td>
@@ -642,44 +638,15 @@ Dunes</a></td>
 <td align="center">18</td>
 <td align="center">21.5</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Kiawah-Island--Ocean-.html">Kiawah
 Island (Ocean)</a></td>
 <td align="center">Kiawah Island, SC</td>
 <td align="center">1991</td>
 <td align="center">24</td>
-<td align="center">31</td>
-<td align="center">27.5</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Oakland-Hills.html">Oakland
-Hills</a></td>
-<td align="center">Bloomfield Hills, MI</td>
-<td align="center">1918</td>
-<td align="center">21</td>
-<td align="center">35</td>
+<td align="center">32</td>
 <td align="center">28</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/San-Francisco.html">San
-Francisco</a></td>
-<td align="center">San Francisco, CA</td>
-<td align="center">1924</td>
-<td align="center">36</td>
-<td align="center">21</td>
-<td align="center">28.5</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Oak-Hill.html">Oak Hill</a></td>
-<td align="center">Rochester, NY</td>
-<td align="center">1925</td>
-<td align="center">20</td>
-<td align="center">40</td>
-<td align="center">30</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -688,8 +655,27 @@ Hills</a></td>
 <td align="center">Tulsa, OK</td>
 <td align="center">1936</td>
 <td align="center">32</td>
+<td align="center">24</td>
 <td align="center">28</td>
-<td align="center">30</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Oak-Hill.html">Oak Hill</a></td>
+<td align="center">Rochester, NY</td>
+<td align="center">1925</td>
+<td align="center">20</td>
+<td align="center">37</td>
+<td align="center">28.5</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/San-Francisco.html">San
+Francisco</a></td>
+<td align="center">San Francisco, CA</td>
+<td align="center">1924</td>
+<td align="center">36</td>
+<td align="center">23</td>
+<td align="center">29.5</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -698,8 +684,8 @@ Village</a></td>
 <td align="center">Dublin, OH</td>
 <td align="center">1974</td>
 <td align="center">15</td>
-<td align="center">51</td>
-<td align="center">33</td>
+<td align="center">48</td>
+<td align="center">31.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -707,19 +693,10 @@ href="https://top100golf.github.io/Peachtree.html">Peachtree</a></td>
 <td align="center">Atlanta, GA</td>
 <td align="center">1947</td>
 <td align="center">30</td>
-<td align="center">37</td>
-<td align="center">33.5</td>
+<td align="center">36</td>
+<td align="center">33</td>
 </tr>
 <tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Camargo.html">Camargo</a></td>
-<td align="center">Indian Hill, OH</td>
-<td align="center">1927</td>
-<td align="center">42</td>
-<td align="center">26</td>
-<td align="center">34</td>
-</tr>
-<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Bethpage--Black-.html">Bethpage
 (Black)</a></td>
@@ -729,6 +706,34 @@ href="https://top100golf.github.io/Bethpage--Black-.html">Bethpage
 <td align="center">30</td>
 <td align="center">35</td>
 </tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Ballyneal.html">Ballyneal</a></td>
+<td align="center">Holyoke, CO</td>
+<td align="center">2006</td>
+<td align="center">44</td>
+<td align="center">31</td>
+<td align="center">37.5</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Somerset-Hills.html">Somerset
+Hills</a></td>
+<td align="center">Bernardsville, NJ</td>
+<td align="center">1918</td>
+<td align="center">50</td>
+<td align="center">26</td>
+<td align="center">38</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Camargo.html">Camargo</a></td>
+<td align="center">Indian Hill, OH</td>
+<td align="center">1927</td>
+<td align="center">42</td>
+<td align="center">34</td>
+<td align="center">38</td>
+</tr>
 <tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Whistling-Straits--Straits-.html">Whistling
@@ -736,28 +741,8 @@ Straits (Straits)</a></td>
 <td align="center">Haven, WI</td>
 <td align="center">1998</td>
 <td align="center">23</td>
-<td align="center">49</td>
-<td align="center">36</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Somerset-Hills.html">Somerset
-Hills</a></td>
-<td align="center">Bernardsville, NJ</td>
-<td align="center">1918</td>
-<td align="center">50</td>
-<td align="center">23</td>
-<td align="center">36.5</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Wade-Hampton.html">Wade
-Hampton</a></td>
-<td align="center">Cashiers, NC</td>
-<td align="center">1987</td>
-<td align="center">26</td>
-<td align="center">50</td>
-<td align="center">38</td>
+<td align="center">54</td>
+<td align="center">38.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -765,67 +750,8 @@ href="https://top100golf.github.io/Shoreacres.html">Shoreacres</a></td>
 <td align="center">Lake Bluff, IL</td>
 <td align="center">1921</td>
 <td align="center">54</td>
-<td align="center">24</td>
-<td align="center">39</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Ballyneal.html">Ballyneal</a></td>
-<td align="center">Holyoke, CO</td>
-<td align="center">2006</td>
-<td align="center">44</td>
-<td align="center">34</td>
-<td align="center">39</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Bandon-Dunes.html">Bandon
-Dunes</a></td>
-<td align="center">Bandon, OR</td>
-<td align="center">1999</td>
-<td align="center">37</td>
-<td align="center">44</td>
-<td align="center">40.5</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/The-Golf-Club.html">The Golf
-Club</a></td>
-<td align="center">New Albany, OH</td>
-<td align="center">1967</td>
-<td align="center">43</td>
-<td align="center">42</td>
-<td align="center">42.5</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Garden-City.html">Garden
-City</a></td>
-<td align="center">Garden City, NY</td>
-<td align="center">1899</td>
-<td align="center">61</td>
 <td align="center">25</td>
-<td align="center">43</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Winged-Foot--East-.html">Winged Foot
-(East)</a></td>
-<td align="center">Mamaroneck, NY</td>
-<td align="center">1923</td>
-<td align="center">41</td>
-<td align="center">46</td>
-<td align="center">43.5</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Olympic--Lake-.html">Olympic
-(Lake)</a></td>
-<td align="center">San Francisco, CA</td>
-<td align="center">1924</td>
-<td align="center">34</td>
-<td align="center">54</td>
-<td align="center">44</td>
+<td align="center">39.5</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -834,10 +760,60 @@ Course</a></td>
 <td align="center">Ooltewah, TN</td>
 <td align="center">1983</td>
 <td align="center">28</td>
-<td align="center">63</td>
-<td align="center">45.5</td>
+<td align="center">52</td>
+<td align="center">40</td>
 </tr>
 <tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Wade-Hampton.html">Wade
+Hampton</a></td>
+<td align="center">Cashiers, NC</td>
+<td align="center">1987</td>
+<td align="center">26</td>
+<td align="center">56</td>
+<td align="center">41</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Bandon-Dunes.html">Bandon
+Dunes</a></td>
+<td align="center">Bandon, OR</td>
+<td align="center">1999</td>
+<td align="center">37</td>
+<td align="center">46</td>
+<td align="center">41.5</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Winged-Foot--East-.html">Winged Foot
+(East)</a></td>
+<td align="center">Mamaroneck, NY</td>
+<td align="center">1923</td>
+<td align="center">41</td>
+<td align="center">43</td>
+<td align="center">42</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Baltusrol--Lower-.html">Baltusrol
+(Lower)</a></td>
+<td align="center">Springfield, NJ</td>
+<td align="center">1922</td>
+<td align="center">45</td>
+<td align="center">41</td>
+<td align="center">43</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Garden-City.html">Garden
+City</a></td>
+<td align="center">Garden City, NY</td>
+<td align="center">1899</td>
+<td align="center">61</td>
+<td align="center">28</td>
+<td align="center">44.5</td>
+</tr>
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Maidstone.html">Maidstone</a></td>
 <td align="center">East Hampton, NY</td>
@@ -846,43 +822,53 @@ href="https://top100golf.github.io/Maidstone.html">Maidstone</a></td>
 <td align="center">29</td>
 <td align="center">46.5</td>
 </tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Olympic--Lake-.html">Olympic
+(Lake)</a></td>
+<td align="center">San Francisco, CA</td>
+<td align="center">1924</td>
+<td align="center">34</td>
+<td align="center">60</td>
+<td align="center">47</td>
+</tr>
 <tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/The-Golf-Club.html">The Golf
+Club</a></td>
+<td align="center">New Albany, OH</td>
+<td align="center">1967</td>
+<td align="center">43</td>
+<td align="center">51</td>
+<td align="center">47</td>
+</tr>
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Pikewood-National.html">Pikewood
 National</a></td>
 <td align="center">Morgantown, WV</td>
 <td align="center">2009</td>
 <td align="center">33</td>
-<td align="center">60</td>
-<td align="center">46.5</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/TPC-Sawgrass.html">TPC
-Sawgrass</a></td>
-<td align="center">Ponte Vedra Beach, FL</td>
-<td align="center">1980</td>
-<td align="center">52</td>
-<td align="center">45</td>
+<td align="center">64</td>
 <td align="center">48.5</td>
 </tr>
 <tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Inverness.html">Inverness</a></td>
-<td align="center">Toledo, OH</td>
-<td align="center">1919</td>
-<td align="center">65</td>
-<td align="center">33</td>
-<td align="center">49</td>
-</tr>
-<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Sleepy-Hollow.html">Sleepy
 Hollow</a></td>
 <td align="center">Briarcliff Manor, NY</td>
 <td align="center">1915</td>
 <td align="center">62</td>
-<td align="center">36</td>
+<td align="center">35</td>
+<td align="center">48.5</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Inverness.html">Inverness</a></td>
+<td align="center">Toledo, OH</td>
+<td align="center">1919</td>
+<td align="center">65</td>
+<td align="center">33</td>
 <td align="center">49</td>
 </tr>
 <tr class="odd">
@@ -897,13 +883,13 @@ Ranch</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Bandon-Trails.html">Bandon
-Trails</a></td>
-<td align="center">Bandon, OR</td>
-<td align="center">2005</td>
-<td align="center">67</td>
-<td align="center">38</td>
-<td align="center">52.5</td>
+href="https://top100golf.github.io/TPC-Sawgrass.html">TPC
+Sawgrass</a></td>
+<td align="center">Ponte Vedra Beach, FL</td>
+<td align="center">1980</td>
+<td align="center">52</td>
+<td align="center">50</td>
+<td align="center">51</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -912,8 +898,28 @@ Creek</a></td>
 <td align="center">North Las Vegas, NV</td>
 <td align="center">1990</td>
 <td align="center">27</td>
-<td align="center">81</td>
-<td align="center">54</td>
+<td align="center">76</td>
+<td align="center">51.5</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Bandon-Trails.html">Bandon
+Trails</a></td>
+<td align="center">Bandon, OR</td>
+<td align="center">2005</td>
+<td align="center">67</td>
+<td align="center">40</td>
+<td align="center">53.5</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Myopia-Hunt.html">Myopia
+Hunt</a></td>
+<td align="center">South Hamilton, MA</td>
+<td align="center">1898</td>
+<td align="center">69</td>
+<td align="center">42</td>
+<td align="center">55.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -922,47 +928,8 @@ Sandwich</a></td>
 <td align="center">Plymouth, MA</td>
 <td align="center">2005</td>
 <td align="center">58</td>
-<td align="center">52</td>
-<td align="center">55</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Congaree.html">Congaree</a></td>
-<td align="center">Ridgeland, SC</td>
-<td align="center">2017</td>
-<td align="center">39</td>
-<td align="center">72</td>
+<td align="center">53</td>
 <td align="center">55.5</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Myopia-Hunt.html">Myopia
-Hunt</a></td>
-<td align="center">South Hamilton, MA</td>
-<td align="center">1898</td>
-<td align="center">69</td>
-<td align="center">43</td>
-<td align="center">56</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Baltusrol--Lower-.html">Baltusrol
-(Lower)</a></td>
-<td align="center">Springfield, NJ</td>
-<td align="center">1922</td>
-<td align="center">45</td>
-<td align="center">69</td>
-<td align="center">57</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Quaker-Ridge.html">Quaker
-Ridge</a></td>
-<td align="center">Scarsdale, NY</td>
-<td align="center">1918</td>
-<td align="center">76</td>
-<td align="center">39</td>
-<td align="center">57.5</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -971,83 +938,66 @@ Peninsula (Shore)</a></td>
 <td align="center">Pebble Beach, CA</td>
 <td align="center">2004</td>
 <td align="center">53</td>
-<td align="center">67</td>
-<td align="center">60</td>
+<td align="center">66</td>
+<td align="center">59.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Old-Macdonald.html">Old
-Macdonald</a></td>
-<td align="center">Bandon, OR</td>
-<td align="center">2010</td>
-<td align="center">56</td>
-<td align="center">66</td>
-<td align="center">61</td>
+href="https://top100golf.github.io/Quaker-Ridge.html">Quaker
+Ridge</a></td>
+<td align="center">Scarsdale, NY</td>
+<td align="center">1918</td>
+<td align="center">76</td>
+<td align="center">47</td>
+<td align="center">61.5</td>
 </tr>
 <tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Congaree.html">Congaree</a></td>
+<td align="center">Ridgeland, SC</td>
+<td align="center">2017</td>
+<td align="center">39</td>
+<td align="center">85</td>
+<td align="center">62</td>
+</tr>
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Rock-Creek-Cattle.html">Rock Creek
 Cattle</a></td>
 <td align="center">Deer Lodge, MT</td>
 <td align="center">2008</td>
 <td align="center">81</td>
-<td align="center">48</td>
-<td align="center">64.5</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Plainfield.html">Plainfield</a></td>
-<td align="center">Edison, NJ</td>
-<td align="center">1921</td>
-<td align="center">75</td>
-<td align="center">57</td>
-<td align="center">66</td>
+<td align="center">45</td>
+<td align="center">63</td>
 </tr>
 <tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Old-Town.html">Old Town</a></td>
-<td align="center">Winston-Salem, NC</td>
-<td align="center">1939</td>
-<td align="center">92</td>
-<td align="center">41</td>
-<td align="center">66.5</td>
-</tr>
-<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Valley-Club-of-Montecito.html">Valley
 Club of Montecito</a></td>
 <td align="center">Montecito, CA</td>
 <td align="center">1929</td>
 <td align="center">78</td>
-<td align="center">55</td>
-<td align="center">66.5</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Sebonack.html">Sebonack</a></td>
-<td align="center">Southampton, NY</td>
-<td align="center">2006</td>
-<td align="center">38</td>
-<td align="center">97</td>
-<td align="center">67.5</td>
+<td align="center">49</td>
+<td align="center">63.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Kittansett.html">Kittansett</a></td>
-<td align="center">Marion, MA</td>
-<td align="center">1922</td>
-<td align="center">77</td>
-<td align="center">58</td>
-<td align="center">67.5</td>
+href="https://top100golf.github.io/Old-Town.html">Old Town</a></td>
+<td align="center">Winston-Salem, NC</td>
+<td align="center">1939</td>
+<td align="center">92</td>
+<td align="center">38</td>
+<td align="center">65</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Milwaukee.html">Milwaukee</a></td>
-<td align="center">River Hills, WI</td>
-<td align="center">1929</td>
-<td align="center">70</td>
-<td align="center">71</td>
-<td align="center">70.5</td>
+href="https://top100golf.github.io/Old-Macdonald.html">Old
+Macdonald</a></td>
+<td align="center">Bandon, OR</td>
+<td align="center">2010</td>
+<td align="center">56</td>
+<td align="center">77</td>
+<td align="center">66.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -1056,8 +1006,26 @@ County</a></td>
 <td align="center">Manchester, MA</td>
 <td align="center">1917</td>
 <td align="center">79</td>
-<td align="center">64</td>
-<td align="center">71.5</td>
+<td align="center">62</td>
+<td align="center">70.5</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Scioto.html">Scioto</a></td>
+<td align="center">Columbus, OH</td>
+<td align="center">1916</td>
+<td align="center">68</td>
+<td align="center">73</td>
+<td align="center">70.5</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Kittansett.html">Kittansett</a></td>
+<td align="center">Marion, MA</td>
+<td align="center">1922</td>
+<td align="center">77</td>
+<td align="center">65</td>
+<td align="center">71</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -1066,27 +1034,44 @@ Hall</a></td>
 <td align="center">Charleston, SC</td>
 <td align="center">1926</td>
 <td align="center">99</td>
-<td align="center">47</td>
-<td align="center">73</td>
+<td align="center">44</td>
+<td align="center">71.5</td>
 </tr>
 <tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Plainfield.html">Plainfield</a></td>
+<td align="center">Edison, NJ</td>
+<td align="center">1921</td>
+<td align="center">75</td>
+<td align="center">69</td>
+<td align="center">72</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Milwaukee.html">Milwaukee</a></td>
+<td align="center">River Hills, WI</td>
+<td align="center">1929</td>
+<td align="center">70</td>
+<td align="center">75</td>
+<td align="center">72.5</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Congressional.html">Congressional</a></td>
+<td align="center">Bethesda, MD</td>
+<td align="center">1962</td>
+<td align="center">91</td>
+<td align="center">55</td>
+<td align="center">73</td>
+</tr>
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Pasatiempo.html">Pasatiempo</a></td>
 <td align="center">Santa Cruz, CA</td>
 <td align="center">1929</td>
 <td align="center">98</td>
-<td align="center">59</td>
-<td align="center">78.5</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Baltusrol--Upper-.html">Baltusrol
-(Upper)</a></td>
-<td align="center">Springfield, NJ</td>
-<td align="center">1922</td>
-<td align="center">63</td>
-<td align="center">99</td>
-<td align="center">81</td>
+<td align="center">58</td>
+<td align="center">78</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -1095,28 +1080,28 @@ Peninsula (Dunes)</a></td>
 <td align="center">Pebble Beach, CA</td>
 <td align="center">1924</td>
 <td align="center">80</td>
-<td align="center">85</td>
-<td align="center">82.5</td>
+<td align="center">78</td>
+<td align="center">79</td>
 </tr>
 <tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Calusa-Pines.html">Calusa
-Pines</a></td>
-<td align="center">Naples, FL</td>
-<td align="center">2001</td>
-<td align="center">74</td>
-<td align="center">98</td>
-<td align="center">86</td>
-</tr>
-<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Cherry-Hills.html">Cherry
 Hills</a></td>
 <td align="center">Cherry Hills Village, CO</td>
 <td align="center">1923</td>
 <td align="center">73</td>
-<td align="center">100</td>
-<td align="center">86.5</td>
+<td align="center">88</td>
+<td align="center">80.5</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Calusa-Pines.html">Calusa
+Pines</a></td>
+<td align="center">Naples, FL</td>
+<td align="center">2001</td>
+<td align="center">74</td>
+<td align="center">93</td>
+<td align="center">83.5</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -1124,8 +1109,8 @@ href="https://top100golf.github.io/Aronimink.html">Aronimink</a></td>
 <td align="center">Newtown Square, PA</td>
 <td align="center">1928</td>
 <td align="center">94</td>
-<td align="center">89</td>
-<td align="center">91.5</td>
+<td align="center">81</td>
+<td align="center">87.5</td>
 </tr>
 <tr class="even">
 <td align="center"><a
@@ -1138,15 +1123,6 @@ href="https://top100golf.github.io/Cal-Club.html">Cal Club</a></td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Ohoopee.html">Ohoopee</a></td>
-<td align="center">Cobbtown, GA</td>
-<td align="center">2018</td>
-<td align="center">-</td>
-<td align="center">32</td>
-<td align="center">-</td>
-</tr>
-<tr class="even">
-<td align="center"><a
 href="https://top100golf.github.io/Alotian.html">Alotian</a></td>
 <td align="center">Roland, AR</td>
 <td align="center">2004</td>
@@ -1154,7 +1130,25 @@ href="https://top100golf.github.io/Alotian.html">Alotian</a></td>
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Sebonack.html">Sebonack</a></td>
+<td align="center">Southampton, NY</td>
+<td align="center">2006</td>
+<td align="center">38</td>
+<td align="center">-</td>
+<td align="center">-</td>
+</tr>
 <tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Ohoopee.html">Ohoopee</a></td>
+<td align="center">Cobbtown, GA</td>
+<td align="center">2018</td>
+<td align="center">-</td>
+<td align="center">39</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Erin-Hills.html">Erin Hills</a></td>
 <td align="center">Erin, WI</td>
@@ -1163,7 +1157,7 @@ href="https://top100golf.github.io/Erin-Hills.html">Erin Hills</a></td>
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Victoria-National.html">Victoria
 National</a></td>
@@ -1173,7 +1167,7 @@ National</a></td>
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Castle-Pines.html">Castle
 Pines</a></td>
@@ -1183,7 +1177,7 @@ Pines</a></td>
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Butler-National.html">Butler
 National</a></td>
@@ -1193,7 +1187,7 @@ National</a></td>
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Spyglass-Hill.html">Spyglass
 Hill</a></td>
@@ -1201,16 +1195,6 @@ Hill</a></td>
 <td align="center">1966</td>
 <td align="center">51</td>
 <td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Eastward-Ho.html">Eastward
-Ho</a></td>
-<td align="center">Chatham, MA</td>
-<td align="center">1922</td>
-<td align="center">-</td>
-<td align="center">53</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
@@ -1225,12 +1209,12 @@ Pines</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Piping-Rock.html">Piping
-Rock</a></td>
-<td align="center">Locust Valley, NY</td>
-<td align="center">1913</td>
+href="https://top100golf.github.io/Eastward-Ho.html">Eastward
+Ho</a></td>
+<td align="center">Chatham, MA</td>
+<td align="center">1922</td>
 <td align="center">-</td>
-<td align="center">56</td>
+<td align="center">57</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
@@ -1245,6 +1229,16 @@ National</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
+href="https://top100golf.github.io/CapRock-Ranch.html">CapRock
+Ranch</a></td>
+<td align="center">Valentine, NE</td>
+<td align="center">2021</td>
+<td align="center">-</td>
+<td align="center">59</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
 href="https://top100golf.github.io/Interlachen.html">Interlachen</a></td>
 <td align="center">Edina, MN</td>
 <td align="center">1911</td>
@@ -1252,7 +1246,7 @@ href="https://top100golf.github.io/Interlachen.html">Interlachen</a></td>
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Medinah--No.-3-.html">Medinah
 (No. 3)</a></td>
@@ -1262,16 +1256,6 @@ href="https://top100golf.github.io/Medinah--No.-3-.html">Medinah
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Gamble-Sands.html">Gamble
-Sands</a></td>
-<td align="center">Brewster, WA</td>
-<td align="center">2014</td>
-<td align="center">-</td>
-<td align="center">61</td>
-<td align="center">-</td>
-</tr>
 <tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/The-Creek-Club.html">The Creek
@@ -1279,19 +1263,30 @@ Club</a></td>
 <td align="center">Locust Valley, NY</td>
 <td align="center">1923</td>
 <td align="center">-</td>
-<td align="center">62</td>
+<td align="center">61</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Moraine.html">Moraine</a></td>
-<td align="center">Dayton, OH</td>
-<td align="center">1930</td>
+href="https://top100golf.github.io/Baltusrol--Upper-.html">Baltusrol
+(Upper)</a></td>
+<td align="center">Springfield, NJ</td>
+<td align="center">1922</td>
+<td align="center">63</td>
 <td align="center">-</td>
-<td align="center">65</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Harbour-Town.html">Harbour
+Town</a></td>
+<td align="center">Hilton Head Island, SC</td>
+<td align="center">1969</td>
+<td align="center">-</td>
+<td align="center">63</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Kinloch.html">Kinloch</a></td>
 <td align="center">Manakin-Sabot, VA</td>
@@ -1300,25 +1295,26 @@ href="https://top100golf.github.io/Kinloch.html">Kinloch</a></td>
 <td align="center">-</td>
 <td align="center">-</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Bel-Air.html">Bel-Air</a></td>
 <td align="center">Los Angeles, CA</td>
 <td align="center">1926</td>
 <td align="center">-</td>
+<td align="center">67</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Piping-Rock.html">Piping
+Rock</a></td>
+<td align="center">Locust Valley, NY</td>
+<td align="center">1913</td>
+<td align="center">-</td>
 <td align="center">68</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Scioto.html">Scioto</a></td>
-<td align="center">Columbus, OH</td>
-<td align="center">1916</td>
-<td align="center">68</td>
-<td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Dallas-National.html">Dallas
 National</a></td>
@@ -1326,6 +1322,15 @@ National</a></td>
 <td align="center">2002</td>
 <td align="center">71</td>
 <td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/White-Bear.html">White Bear</a></td>
+<td align="center">Dellwood, MN</td>
+<td align="center">1912</td>
+<td align="center">-</td>
+<td align="center">71</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
@@ -1339,12 +1344,11 @@ href="https://top100golf.github.io/Estancia.html">Estancia</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Harbour-Town.html">Harbour
-Town</a></td>
-<td align="center">Hilton Head Island, SC</td>
-<td align="center">1969</td>
+href="https://top100golf.github.io/Moraine.html">Moraine</a></td>
+<td align="center">Dayton, OH</td>
+<td align="center">1930</td>
 <td align="center">-</td>
-<td align="center">73</td>
+<td align="center">72</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
@@ -1358,30 +1362,11 @@ href="https://top100golf.github.io/Ridgewood.html">Ridgewood</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Baltimore.html">Baltimore</a></td>
-<td align="center">Lutherville, MD</td>
-<td align="center">1926</td>
+href="https://top100golf.github.io/Lawsonia.html">Lawsonia</a></td>
+<td align="center">Green Lake, WI</td>
+<td align="center">1930</td>
 <td align="center">-</td>
-<td align="center">75</td>
-<td align="center">-</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/White-Bear.html">White Bear</a></td>
-<td align="center">Dellwood, MN</td>
-<td align="center">1912</td>
-<td align="center">-</td>
-<td align="center">76</td>
-<td align="center">-</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Streamsong--Red-.html">Streamsong
-(Red)</a></td>
-<td align="center">Streamsong, FL</td>
-<td align="center">2012</td>
-<td align="center">-</td>
-<td align="center">77</td>
+<td align="center">79</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
@@ -1389,25 +1374,6 @@ href="https://top100golf.github.io/Streamsong--Red-.html">Streamsong
 href="https://top100golf.github.io/St.-Louis.html">St. Louis</a></td>
 <td align="center">St. Louis, MO</td>
 <td align="center">1914</td>
-<td align="center">-</td>
-<td align="center">78</td>
-<td align="center">-</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Kingsley.html">Kingsley</a></td>
-<td align="center">Kingsley, MI</td>
-<td align="center">2001</td>
-<td align="center">-</td>
-<td align="center">79</td>
-<td align="center">-</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Sheep-Ranch.html">Sheep
-Ranch</a></td>
-<td align="center">Bandon, OR</td>
-<td align="center">2019</td>
 <td align="center">-</td>
 <td align="center">80</td>
 <td align="center">-</td>
@@ -1423,10 +1389,10 @@ href="https://top100golf.github.io/Canyata.html">Canyata</a></td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Prairie-Club.html">Prairie
-Club</a></td>
-<td align="center">Valentine, NE</td>
-<td align="center">2010</td>
+href="https://top100golf.github.io/Gamble-Sands.html">Gamble
+Sands</a></td>
+<td align="center">Brewster, WA</td>
+<td align="center">2014</td>
 <td align="center">-</td>
 <td align="center">82</td>
 <td align="center">-</td>
@@ -1443,8 +1409,9 @@ Bluffs (Bluffs)</a></td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Hollywood.html">Hollywood</a></td>
-<td align="center">Deal, NJ</td>
+href="https://top100golf.github.io/Glens-Falls.html">Glens
+Falls</a></td>
+<td align="center">Queensbury, NY</td>
 <td align="center">1912</td>
 <td align="center">-</td>
 <td align="center">83</td>
@@ -1490,19 +1457,19 @@ Creek</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Glens-Falls.html">Glens
-Falls</a></td>
-<td align="center">Queensbury, NY</td>
-<td align="center">1912</td>
+href="https://top100golf.github.io/Streamsong--Red-.html">Streamsong
+(Red)</a></td>
+<td align="center">Streamsong, FL</td>
+<td align="center">2012</td>
 <td align="center">-</td>
 <td align="center">86</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Lawsonia.html">Lawsonia</a></td>
-<td align="center">Green Lake, WI</td>
-<td align="center">1930</td>
+href="https://top100golf.github.io/Baltimore.html">Baltimore</a></td>
+<td align="center">Lutherville, MD</td>
+<td align="center">1926</td>
 <td align="center">-</td>
 <td align="center">87</td>
 <td align="center">-</td>
@@ -1528,12 +1495,11 @@ Fields (North)</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Wolf-Point-Ranch.html">Wolf Point
-Ranch</a></td>
-<td align="center">Port Lavaca, TX</td>
-<td align="center">2008</td>
+href="https://top100golf.github.io/Hollywood.html">Hollywood</a></td>
+<td align="center">Deal, NJ</td>
+<td align="center">1912</td>
 <td align="center">-</td>
-<td align="center">88</td>
+<td align="center">89</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
@@ -1548,10 +1514,9 @@ National</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Mountain-Ridge.html">Mountain
-Ridge</a></td>
-<td align="center">West Caldwell, NJ</td>
-<td align="center">1929</td>
+href="https://top100golf.github.io/Kingsley.html">Kingsley</a></td>
+<td align="center">Kingsley, MI</td>
+<td align="center">2001</td>
 <td align="center">-</td>
 <td align="center">90</td>
 <td align="center">-</td>
@@ -1568,40 +1533,21 @@ Harvest</a></td>
 </tr>
 <tr class="even">
 <td align="center"><a
-href="https://top100golf.github.io/Congressional.html">Congressional</a></td>
-<td align="center">Bethesda, MD</td>
-<td align="center">1962</td>
-<td align="center">91</td>
+href="https://top100golf.github.io/Nanea.html">Nanea</a></td>
+<td align="center">Kailua Kona, HI</td>
+<td align="center">2003</td>
 <td align="center">-</td>
+<td align="center">91</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Sand-Valley.html">Sand
-Valley</a></td>
-<td align="center">Nekoosa, WI</td>
-<td align="center">2017</td>
-<td align="center">-</td>
-<td align="center">91</td>
-<td align="center">-</td>
-</tr>
-<tr class="even">
-<td align="center"><a
-href="https://top100golf.github.io/Pinehurst--No.-4-.html">Pinehurst
-(No. 4)</a></td>
-<td align="center">Pinehurst, NC</td>
-<td align="center">2018</td>
+href="https://top100golf.github.io/Streamsong--Blue-.html">Streamsong
+(Blue)</a></td>
+<td align="center">Streamsong, FL</td>
+<td align="center">2012</td>
 <td align="center">-</td>
 <td align="center">92</td>
-<td align="center">-</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Palmetto.html">Palmetto</a></td>
-<td align="center">Aiken, SC</td>
-<td align="center">1895</td>
-<td align="center">-</td>
-<td align="center">93</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
@@ -1615,9 +1561,10 @@ href="https://top100golf.github.io/Valhalla.html">Valhalla</a></td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Nanea.html">Nanea</a></td>
-<td align="center">Kailua Kona, HI</td>
-<td align="center">2003</td>
+href="https://top100golf.github.io/Prairie-Club.html">Prairie
+Club</a></td>
+<td align="center">Valentine, NE</td>
+<td align="center">2010</td>
 <td align="center">-</td>
 <td align="center">94</td>
 <td align="center">-</td>
@@ -1634,15 +1581,23 @@ Run</a></td>
 </tr>
 <tr class="odd">
 <td align="center"><a
-href="https://top100golf.github.io/Streamsong--Blue-.html">Streamsong
-(Blue)</a></td>
-<td align="center">Streamsong, FL</td>
-<td align="center">2012</td>
+href="https://top100golf.github.io/Davenport.html">Davenport</a></td>
+<td align="center">Pleasant Valley, IA</td>
+<td align="center">1924</td>
 <td align="center">-</td>
 <td align="center">95</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Brookside.html">Brookside</a></td>
+<td align="center">Canton, OH</td>
+<td align="center">1916</td>
+<td align="center">-</td>
+<td align="center">96</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Double-Eagle.html">Double
 Eagle</a></td>
@@ -1650,16 +1605,6 @@ Eagle</a></td>
 <td align="center">1992</td>
 <td align="center">96</td>
 <td align="center">-</td>
-<td align="center">-</td>
-</tr>
-<tr class="odd">
-<td align="center"><a
-href="https://top100golf.github.io/Mammoth-Dunes.html">Mammoth
-Dunes</a></td>
-<td align="center">Nekoosa, WI</td>
-<td align="center">2018</td>
-<td align="center">-</td>
-<td align="center">96</td>
 <td align="center">-</td>
 </tr>
 <tr class="even">
@@ -1670,6 +1615,45 @@ Hollow</a></td>
 <td align="center">1961</td>
 <td align="center">97</td>
 <td align="center">-</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Sheep-Ranch.html">Sheep
+Ranch</a></td>
+<td align="center">Bandon, OR</td>
+<td align="center">2019</td>
+<td align="center">-</td>
+<td align="center">97</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Sand-Valley.html">Sand
+Valley</a></td>
+<td align="center">Nekoosa, WI</td>
+<td align="center">2017</td>
+<td align="center">-</td>
+<td align="center">98</td>
+<td align="center">-</td>
+</tr>
+<tr class="odd">
+<td align="center"><a
+href="https://top100golf.github.io/Palmetto.html">Palmetto</a></td>
+<td align="center">Aiken, SC</td>
+<td align="center">1895</td>
+<td align="center">-</td>
+<td align="center">99</td>
+<td align="center">-</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Pinehurst--No.-4-.html">Pinehurst
+(No. 4)</a></td>
+<td align="center">Pinehurst, NC</td>
+<td align="center">2018</td>
+<td align="center">-</td>
+<td align="center">100</td>
 <td align="center">-</td>
 </tr>
 <tr class="odd">

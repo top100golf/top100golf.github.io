@@ -13,7 +13,7 @@
 
 <title>America’s ex-top 100 golf courses</title>
 
-<script src="site_libs/header-attrs-2.16/header-attrs.js"></script>
+<script src="site_libs/header-attrs-2.17/header-attrs.js"></script>
 <script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/cosmo.min.css" rel="stylesheet" />
@@ -179,8 +179,8 @@ $(document).ready(function () {
   border-radius: 4px;
 }
 
-.tabset-dropdown > .nav-tabs > li.active:before {
-  content: "";
+.tabset-dropdown > .nav-tabs > li.active:before, .tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "\e259";
   font-family: 'Glyphicons Halflings';
   display: inline-block;
   padding: 10px;
@@ -188,16 +188,9 @@ $(document).ready(function () {
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
-  content: "&#xe258;";
-  border: none;
-}
-
-.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
-  content: "";
+  content: "\e258";
   font-family: 'Glyphicons Halflings';
-  display: inline-block;
-  padding: 10px;
-  border-right: 1px solid #ddd;
+  border: none;
 }
 
 .tabset-dropdown > .nav-tabs > li.active {
@@ -341,11 +334,11 @@ $(document).ready(function () {
 
 <hr />
 <p>Unlike country club memberships, golf courses don’t always get to
-keep their spots in the Top 100 for life. The following 147 courses used
+keep their spots in the Top 100 for life. The following 150 courses used
 to be ranked in one of the two Top 100 lists but have dropped off. They
 have been sorted by the number of times they appeared on a list, with
 ties broken by their best rank achieved.</p>
-<p>As of 2015 there were about 16,000 golf courses in the USA, 276 of
+<p>As of 2015 there were about 16,000 golf courses in the USA, 279 of
 which have been ranked in the Top 100 at some point. Making even a
 single appearance is something to be proud of.</p>
 <hr />
@@ -1798,6 +1791,17 @@ Mountain (Cochise)</a></td>
 </tr>
 <tr class="odd">
 <td align="center"><a
+href="https://top100golf.github.io/Wolf-Point-Ranch.html">Wolf Point
+Ranch</a></td>
+<td align="center">Port Lavaca, TX</td>
+<td align="center">2008</td>
+<td align="center">1</td>
+<td align="center">2019</td>
+<td align="center">-</td>
+<td align="center">88</td>
+</tr>
+<tr class="even">
+<td align="center"><a
 href="https://top100golf.github.io/Concession.html">Concession</a></td>
 <td align="center">Bradenton, FL</td>
 <td align="center">2006</td>
@@ -1806,7 +1810,7 @@ href="https://top100golf.github.io/Concession.html">Concession</a></td>
 <td align="center">-</td>
 <td align="center">88</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Golf-Club-of-Georgia.html">Golf Club
 of Georgia</a></td>
@@ -1816,6 +1820,17 @@ of Georgia</a></td>
 <td align="center">1993</td>
 <td align="center">-</td>
 <td align="center">88</td>
+</tr>
+<tr class="even">
+<td align="center"><a
+href="https://top100golf.github.io/Mountain-Ridge.html">Mountain
+Ridge</a></td>
+<td align="center">West Caldwell, NJ</td>
+<td align="center">1929</td>
+<td align="center">1</td>
+<td align="center">2019</td>
+<td align="center">-</td>
+<td align="center">90</td>
 </tr>
 <tr class="odd">
 <td align="center"><a
@@ -1861,6 +1876,17 @@ href="https://top100golf.github.io/Stanford.html">Stanford</a></td>
 </tr>
 <tr class="odd">
 <td align="center"><a
+href="https://top100golf.github.io/Mammoth-Dunes.html">Mammoth
+Dunes</a></td>
+<td align="center">Nekoosa, WI</td>
+<td align="center">2018</td>
+<td align="center">1</td>
+<td align="center">2019</td>
+<td align="center">-</td>
+<td align="center">96</td>
+</tr>
+<tr class="even">
+<td align="center"><a
 href="https://top100golf.github.io/Skokie.html">Skokie</a></td>
 <td align="center">Glencoe, IL</td>
 <td align="center">1905</td>
@@ -1869,7 +1895,7 @@ href="https://top100golf.github.io/Skokie.html">Skokie</a></td>
 <td align="center">97</td>
 <td align="center">-</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Hershey--West-.html">Hershey
 (West)</a></td>
@@ -1880,7 +1906,7 @@ href="https://top100golf.github.io/Hershey--West-.html">Hershey
 <td align="center">97</td>
 <td align="center">-</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Merit.html">Merit</a></td>
 <td align="center">Libertyville, IL</td>
@@ -1890,7 +1916,7 @@ href="https://top100golf.github.io/Merit.html">Merit</a></td>
 <td align="center">-</td>
 <td align="center">98</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Colleton-River--Pete-Dye-.html">Colleton
 River (Pete Dye)</a></td>
@@ -1901,7 +1927,7 @@ River (Pete Dye)</a></td>
 <td align="center">-</td>
 <td align="center">99</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Wigwam--Gold-.html">Wigwam
 (Gold)</a></td>
@@ -1912,7 +1938,7 @@ href="https://top100golf.github.io/Wigwam--Gold-.html">Wigwam
 <td align="center">99</td>
 <td align="center">-</td>
 </tr>
-<tr class="even">
+<tr class="odd">
 <td align="center"><a
 href="https://top100golf.github.io/Naples-National.html">Naples
 National</a></td>
@@ -1923,7 +1949,7 @@ National</a></td>
 <td align="center">100</td>
 <td align="center">-</td>
 </tr>
-<tr class="odd">
+<tr class="even">
 <td align="center"><a
 href="https://top100golf.github.io/Cedar-Ridge.html">Cedar
 Ridge</a></td>
