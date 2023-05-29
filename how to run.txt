@@ -1,0 +1,6 @@
+- Look at site.yml file for which base RMDs need to be copied (last run about, index, top 100, ex top 100, designers, states)
+- generate all year tables
+- generate all courses
+- Fix course year data for x-axis in plot rankings
+- Fix course year data for x-axis in single_course.Rmd
+- Edit years in the top 100 and ex top 100
