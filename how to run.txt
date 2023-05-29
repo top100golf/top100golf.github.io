@@ -1,6 +1,9 @@
-- Look at site.yml file for which base RMDs need to be copied (last run about, index, top 100, ex top 100, designers, states)
+- Fix course year data for x-axis in plot rankings
+- Look for new course singletons to turn into dots or back into lines 
+- Fix course year data for x-axis in single_course.Rmd
+- Edit years in the top 100 and ex top 100 file
+- Check prolific designers to see if anything has changed (Gil Hanse, David McLay Kidd only 1 away)
+
+- Look at site.yml file for which base RMDs need to be copied (last time: about, index, top 100, ex top 100, designers, states)
 - generate all year tables
 - generate all courses
-- Fix course year data for x-axis in plot rankings
-- Fix course year data for x-axis in single_course.Rmd
-- Edit years in the top 100 and ex top 100
