@@ -1,9 +1,15 @@
-- Fix course year data for x-axis in plot rankings
-- Look for new course singletons to turn into dots or back into lines 
+golf_course_rankings folder
+- Add any new courses to course info database in data folder
+- new excel sheet golf_magazine_2024.xlsx in rankings folder
+- course_info.R: update course info RDS and append new rankings 
+- plot_rankings.R: When new year included, fix course year data for x-axis in plot rankings (rep 20 to 21 when new year ticks). When new golf magazine, fix any filters 
+- plot_rankings.R: Look for new course singletons to turn into dots or back into lines 
 - Fix course year data for x-axis in single_course.Rmd
-- Edit years in the top 100 and ex top 100 file
-- Check prolific designers to see if anything has changed (Gil Hanse, David McLay Kidd only 1 away)
+- Edit candidate years in the top 100 and ex top 100 file
+- Check designers.Rmd to see if anything has changed. Note designer PNG is hosted in the top100golf.github.io folder so copy to both 
 
-- Look at site.yml file for which base RMDs need to be copied (last time: about, index, top 100, ex top 100, designers, states)
-- generate all year tables
+top100golf.github.io folder
+- Look at _site.yml file for which base RMDs need to be copied from the golf_course_rankings directory (last time: about, index, top 100, ex top 100, designers, states). May need to create new rankings_2023_2024 soon
+- generate all year tables (if a new GD season)
 - generate all courses
+- Build > Build Website
